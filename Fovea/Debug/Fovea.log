@@ -1,8 +1,1 @@
-﻿  tga.cpp
-foo.obj : error LNK2019: unresolved external symbol _tgaLoad referenced in function _init
-    Hint on symbols that are defined and could potentially match:
-      "struct tgaInfo * __cdecl tgaLoad(char *)" (?tgaLoad@@YAPAUtgaInfo@@PAD@Z)
-foo.obj : error LNK2019: unresolved external symbol _tgaDestroy referenced in function _init
-    Hint on symbols that are defined and could potentially match:
-      "void __cdecl tgaDestroy(struct tgaInfo *)" (?tgaDestroy@@YAXPAUtgaInfo@@@Z)
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Debug\Fovea.exe : fatal error LNK1120: 2 unresolved externals
+﻿  Fovea.vcxproj -> D:\BIF_S4_SS_2020\ecg\project\Fovea\Debug\Fovea.exe
