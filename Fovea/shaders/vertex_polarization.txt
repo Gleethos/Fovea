@@ -1,23 +1,31 @@
 
-//====================================//
-// CONTEXT VARIABLES:
+// CONTEXT VARIABLES: 
+//~~~~~~~~~~~~~~~~~~~
+//(uniform! -> https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/uniform.php)
 
-//| Fovea (center):
-//\----------------
+layout (std140) uniform Params 
+{
+	// | Fovea (center):
+	// \----------------
 
-float fx, fy;
+	float fx, fy;
 
-//| Base:
-//\-------
-float base = 2;
+	// | Base:
+	// \-------
 
-//| Radius: (... of view cone)
-//\-------------------------------
-float r;
-float rp = log(2, r); //log(base, ..);
+	float base = 2;
 
-//====================================//
+	// | Radius: (... of view cone)
+	// \-------------------------------
+
+	float r;
+	//float rp; // = log(2, r); //log(base, ..);
+}//________________________________________________________
+
+
+
 // SHADER: 
+//~~~~~~~~
 
 in vec3 v; // Vertecies!
 
@@ -40,6 +48,8 @@ void main()
 
     	gl_Position = vec4( v_pol, 1.0 ); 
 }
+
+// UTILITY :
 
 float _log(double base, float x) {
     return log(x) / log(base);

@@ -1,26 +1,33 @@
 
-//====================================//
-// CONTEXT VARIABLES:
+// CONTEXT VARIABLES: 
+//~~~~~~~~~~~~~~~~~~~
+//(uniform! -> https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/uniform.php)
 
-//| Fovea (center):
-//\----------------
+layout (std140) uniform Params 
+{
+	// | Fovea (center):
+	// \----------------
 
-float fx, fy;
+	float fx, fy;
 
-//| Base:
-//\-------
-float base = 2;
+	// | Base:
+	// \-------
 
-//| Radius: (... of view cone)
-//\-------------------------------
-float r = ...;
-float rp = _log(base, r); // log scaled r...
+	float base = 2;
 
-//====================================//
+	// | Radius: (... of view cone)
+	// \-------------------------------
+	float r;// = ...;
+	//float rp;// = _log(base, r); // log scaled r...
+}//________________________________________________________
+
+
+
 // INTERPOLARIZATION SHADER: 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 varying vec2 pc; // pixel coordinate of current output pixel
-uniform sampler2D inputImg; // input image
+uniform sampler2D inputImg; // input image (uniform! -> https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/uniform.php)
 
 void main() 
 {

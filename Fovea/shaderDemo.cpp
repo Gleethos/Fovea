@@ -72,7 +72,7 @@ void changeSize(int w, int h) {
 
 
 // ------------------------------------------------------------
-//
+// Nepp & Hinterleitner - Windows - Foveated Rendering (log polar transformation shaders...)
 // Render stuff
 //
 
@@ -234,6 +234,18 @@ GLuint setupShaders() {
 	// set semantics for the shader variables
 	shader.setProgramOutput(0,"outputF");
 	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
+	
+	/*
+	struct Params {
+		float fx;
+		float fy;
+		float base;
+		float r;
+	}
+	// Todo: Fill!
+	shader.setBlock("Params", &Params);
+	
+	*/
 
 	shader.prepareProgram();
 
