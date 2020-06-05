@@ -1,0 +1,34 @@
+
+//====================================//
+// CONTEXT VARIABLES:
+
+//| Fovea (center):
+//\----------------
+
+float fx, fy;
+
+//| Base:
+//\-------
+float base = 2;
+
+//| Radius: (... of view cone)
+//\-------------------------------
+float r = ...;
+float rp = _log(base, r); // log scaled r...
+
+//====================================//
+// INTERPOLARIZATION SHADER: 
+
+varying vec2 pc; // pixel coordinate of current output pixel
+uniform sampler2D inputImg; // input image
+
+void main() 
+{
+  	float vp = pc.x; // p is x-direction in output
+  	float va = pc.y; // alpha is y-direction in output
+  
+	float vd = pow(base, vp);
+	float x = vd * cos(va) + fx; // adding fovea
+  	float y = vd * sin(va) + fy;
+  	gl_FragColor = texture2D(inputImg, vec2(x,y));
+}

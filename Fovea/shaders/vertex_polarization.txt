@@ -1,0 +1,46 @@
+
+//====================================//
+// CONTEXT VARIABLES:
+
+//| Fovea (center):
+//\----------------
+
+float fx, fy;
+
+//| Base:
+//\-------
+float base = 2;
+
+//| Radius: (... of view cone)
+//\-------------------------------
+float r;
+float rp = log(2, r); //log(base, ..);
+
+//====================================//
+// SHADER: 
+
+in vec3 v; // Vertecies!
+
+out vec4 gl_Position;
+
+void main()
+{
+	vec2 fv_vec = vec2( v.x-fx, v.y-fy )
+
+	float vp = _log( // logarithmic distance!
+		base,
+		fpow(fpow(fv_vec.x, 2)+fpow(fv_vec.y, 2), 0.5) // distance
+	);
+	float va = arctan( fv_vec.y / fv_vec.x ); // polar angle
+
+	vec3 v_pol; // vertecies radial
+
+	v_pol.x = vp;
+	v_pol.y = va;
+
+    	gl_Position = vec4( v_pol, 1.0 ); 
+}
+
+float _log(double base, float x) {
+    return log(x) / log(base);
+}
