@@ -1,351 +1,101 @@
-﻿  shaderDemo.cpp
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(227,1): warning C4005: 'GLUT_RGB': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(172): message : see previous definition of 'GLUT_RGB'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(228,1): warning C4005: 'GLUT_RGBA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(173): message : see previous definition of 'GLUT_RGBA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(229,1): warning C4005: 'GLUT_INDEX': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(174): message : see previous definition of 'GLUT_INDEX'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(230,1): warning C4005: 'GLUT_SINGLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(175): message : see previous definition of 'GLUT_SINGLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(231,1): warning C4005: 'GLUT_DOUBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(176): message : see previous definition of 'GLUT_DOUBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(232,1): warning C4005: 'GLUT_ACCUM': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(177): message : see previous definition of 'GLUT_ACCUM'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(233,1): warning C4005: 'GLUT_ALPHA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(178): message : see previous definition of 'GLUT_ALPHA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(234,1): warning C4005: 'GLUT_DEPTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(179): message : see previous definition of 'GLUT_DEPTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(235,1): warning C4005: 'GLUT_STENCIL': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(180): message : see previous definition of 'GLUT_STENCIL'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(237,1): warning C4005: 'GLUT_MULTISAMPLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(181): message : see previous definition of 'GLUT_MULTISAMPLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(238,1): warning C4005: 'GLUT_STEREO': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(182): message : see previous definition of 'GLUT_STEREO'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(241,1): warning C4005: 'GLUT_LUMINANCE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(183): message : see previous definition of 'GLUT_LUMINANCE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(245,1): warning C4005: 'GLUT_LEFT_BUTTON': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(161): message : see previous definition of 'GLUT_LEFT_BUTTON'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(246,1): warning C4005: 'GLUT_MIDDLE_BUTTON': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(162): message : see previous definition of 'GLUT_MIDDLE_BUTTON'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(247,1): warning C4005: 'GLUT_RIGHT_BUTTON': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(163): message : see previous definition of 'GLUT_RIGHT_BUTTON'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(250,1): warning C4005: 'GLUT_DOWN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(164): message : see previous definition of 'GLUT_DOWN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(251,1): warning C4005: 'GLUT_UP': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(165): message : see previous definition of 'GLUT_UP'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(255,1): warning C4005: 'GLUT_KEY_F1': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(136): message : see previous definition of 'GLUT_KEY_F1'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(256,1): warning C4005: 'GLUT_KEY_F2': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(137): message : see previous definition of 'GLUT_KEY_F2'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(257,1): warning C4005: 'GLUT_KEY_F3': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(138): message : see previous definition of 'GLUT_KEY_F3'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(258,1): warning C4005: 'GLUT_KEY_F4': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(139): message : see previous definition of 'GLUT_KEY_F4'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(259,1): warning C4005: 'GLUT_KEY_F5': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(140): message : see previous definition of 'GLUT_KEY_F5'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(260,1): warning C4005: 'GLUT_KEY_F6': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(141): message : see previous definition of 'GLUT_KEY_F6'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(261,1): warning C4005: 'GLUT_KEY_F7': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(142): message : see previous definition of 'GLUT_KEY_F7'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(262,1): warning C4005: 'GLUT_KEY_F8': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(143): message : see previous definition of 'GLUT_KEY_F8'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(263,1): warning C4005: 'GLUT_KEY_F9': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(144): message : see previous definition of 'GLUT_KEY_F9'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(264,1): warning C4005: 'GLUT_KEY_F10': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(145): message : see previous definition of 'GLUT_KEY_F10'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(265,1): warning C4005: 'GLUT_KEY_F11': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(146): message : see previous definition of 'GLUT_KEY_F11'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(266,1): warning C4005: 'GLUT_KEY_F12': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(147): message : see previous definition of 'GLUT_KEY_F12'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(268,1): warning C4005: 'GLUT_KEY_LEFT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(148): message : see previous definition of 'GLUT_KEY_LEFT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(269,1): warning C4005: 'GLUT_KEY_UP': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(149): message : see previous definition of 'GLUT_KEY_UP'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(270,1): warning C4005: 'GLUT_KEY_RIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(150): message : see previous definition of 'GLUT_KEY_RIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(271,1): warning C4005: 'GLUT_KEY_DOWN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(151): message : see previous definition of 'GLUT_KEY_DOWN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(272,1): warning C4005: 'GLUT_KEY_PAGE_UP': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(152): message : see previous definition of 'GLUT_KEY_PAGE_UP'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(273,1): warning C4005: 'GLUT_KEY_PAGE_DOWN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(153): message : see previous definition of 'GLUT_KEY_PAGE_DOWN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(274,1): warning C4005: 'GLUT_KEY_HOME': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(154): message : see previous definition of 'GLUT_KEY_HOME'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(275,1): warning C4005: 'GLUT_KEY_END': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(155): message : see previous definition of 'GLUT_KEY_END'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(276,1): warning C4005: 'GLUT_KEY_INSERT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(156): message : see previous definition of 'GLUT_KEY_INSERT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(280,1): warning C4005: 'GLUT_LEFT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(166): message : see previous definition of 'GLUT_LEFT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(281,1): warning C4005: 'GLUT_ENTERED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(167): message : see previous definition of 'GLUT_ENTERED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(284,1): warning C4005: 'GLUT_MENU_NOT_IN_USE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(188): message : see previous definition of 'GLUT_MENU_NOT_IN_USE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(285,1): warning C4005: 'GLUT_MENU_IN_USE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(189): message : see previous definition of 'GLUT_MENU_IN_USE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(288,1): warning C4005: 'GLUT_NOT_VISIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(190): message : see previous definition of 'GLUT_NOT_VISIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(289,1): warning C4005: 'GLUT_VISIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(191): message : see previous definition of 'GLUT_VISIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(292,1): warning C4005: 'GLUT_HIDDEN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(192): message : see previous definition of 'GLUT_HIDDEN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(293,1): warning C4005: 'GLUT_FULLY_RETAINED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(193): message : see previous definition of 'GLUT_FULLY_RETAINED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(294,1): warning C4005: 'GLUT_PARTIALLY_RETAINED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(194): message : see previous definition of 'GLUT_PARTIALLY_RETAINED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(295,1): warning C4005: 'GLUT_FULLY_COVERED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(195): message : see previous definition of 'GLUT_FULLY_COVERED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(298,1): warning C4005: 'GLUT_RED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(369): message : see previous definition of 'GLUT_RED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(299,1): warning C4005: 'GLUT_GREEN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(370): message : see previous definition of 'GLUT_GREEN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(300,1): warning C4005: 'GLUT_BLUE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(371): message : see previous definition of 'GLUT_BLUE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(304,1): warning C4005: 'GLUT_STROKE_ROMAN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(203): message : see previous definition of 'GLUT_STROKE_ROMAN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(305,1): warning C4005: 'GLUT_STROKE_MONO_ROMAN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(204): message : see previous definition of 'GLUT_STROKE_MONO_ROMAN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(308,1): warning C4005: 'GLUT_BITMAP_9_BY_15': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(205): message : see previous definition of 'GLUT_BITMAP_9_BY_15'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(309,1): warning C4005: 'GLUT_BITMAP_8_BY_13': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(206): message : see previous definition of 'GLUT_BITMAP_8_BY_13'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(310,1): warning C4005: 'GLUT_BITMAP_TIMES_ROMAN_10': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(207): message : see previous definition of 'GLUT_BITMAP_TIMES_ROMAN_10'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(311,1): warning C4005: 'GLUT_BITMAP_TIMES_ROMAN_24': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(208): message : see previous definition of 'GLUT_BITMAP_TIMES_ROMAN_24'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(313,1): warning C4005: 'GLUT_BITMAP_HELVETICA_10': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(209): message : see previous definition of 'GLUT_BITMAP_HELVETICA_10'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(314,1): warning C4005: 'GLUT_BITMAP_HELVETICA_12': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(210): message : see previous definition of 'GLUT_BITMAP_HELVETICA_12'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(315,1): warning C4005: 'GLUT_BITMAP_HELVETICA_18': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(211): message : see previous definition of 'GLUT_BITMAP_HELVETICA_18'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(348,1): warning C4005: 'GLUT_WINDOW_X': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(243): message : see previous definition of 'GLUT_WINDOW_X'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(349,1): warning C4005: 'GLUT_WINDOW_Y': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(244): message : see previous definition of 'GLUT_WINDOW_Y'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(350,1): warning C4005: 'GLUT_WINDOW_WIDTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(245): message : see previous definition of 'GLUT_WINDOW_WIDTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(351,1): warning C4005: 'GLUT_WINDOW_HEIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(246): message : see previous definition of 'GLUT_WINDOW_HEIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(352,1): warning C4005: 'GLUT_WINDOW_BUFFER_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(247): message : see previous definition of 'GLUT_WINDOW_BUFFER_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(353,1): warning C4005: 'GLUT_WINDOW_STENCIL_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(248): message : see previous definition of 'GLUT_WINDOW_STENCIL_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(354,1): warning C4005: 'GLUT_WINDOW_DEPTH_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(249): message : see previous definition of 'GLUT_WINDOW_DEPTH_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(355,1): warning C4005: 'GLUT_WINDOW_RED_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(250): message : see previous definition of 'GLUT_WINDOW_RED_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(356,1): warning C4005: 'GLUT_WINDOW_GREEN_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(251): message : see previous definition of 'GLUT_WINDOW_GREEN_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(357,1): warning C4005: 'GLUT_WINDOW_BLUE_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(252): message : see previous definition of 'GLUT_WINDOW_BLUE_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(358,1): warning C4005: 'GLUT_WINDOW_ALPHA_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(253): message : see previous definition of 'GLUT_WINDOW_ALPHA_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(359,1): warning C4005: 'GLUT_WINDOW_ACCUM_RED_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(254): message : see previous definition of 'GLUT_WINDOW_ACCUM_RED_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(360,1): warning C4005: 'GLUT_WINDOW_ACCUM_GREEN_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(255): message : see previous definition of 'GLUT_WINDOW_ACCUM_GREEN_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(361,1): warning C4005: 'GLUT_WINDOW_ACCUM_BLUE_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(256): message : see previous definition of 'GLUT_WINDOW_ACCUM_BLUE_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(362,1): warning C4005: 'GLUT_WINDOW_ACCUM_ALPHA_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(257): message : see previous definition of 'GLUT_WINDOW_ACCUM_ALPHA_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(363,1): warning C4005: 'GLUT_WINDOW_DOUBLEBUFFER': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(258): message : see previous definition of 'GLUT_WINDOW_DOUBLEBUFFER'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(364,1): warning C4005: 'GLUT_WINDOW_RGBA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(259): message : see previous definition of 'GLUT_WINDOW_RGBA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(365,1): warning C4005: 'GLUT_WINDOW_PARENT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(260): message : see previous definition of 'GLUT_WINDOW_PARENT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(366,1): warning C4005: 'GLUT_WINDOW_NUM_CHILDREN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(261): message : see previous definition of 'GLUT_WINDOW_NUM_CHILDREN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(367,1): warning C4005: 'GLUT_WINDOW_COLORMAP_SIZE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(262): message : see previous definition of 'GLUT_WINDOW_COLORMAP_SIZE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(369,1): warning C4005: 'GLUT_WINDOW_NUM_SAMPLES': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(263): message : see previous definition of 'GLUT_WINDOW_NUM_SAMPLES'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(370,1): warning C4005: 'GLUT_WINDOW_STEREO': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(264): message : see previous definition of 'GLUT_WINDOW_STEREO'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(373,1): warning C4005: 'GLUT_WINDOW_CURSOR': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(265): message : see previous definition of 'GLUT_WINDOW_CURSOR'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(375,1): warning C4005: 'GLUT_SCREEN_WIDTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(267): message : see previous definition of 'GLUT_SCREEN_WIDTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(376,1): warning C4005: 'GLUT_SCREEN_HEIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(268): message : see previous definition of 'GLUT_SCREEN_HEIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(377,1): warning C4005: 'GLUT_SCREEN_WIDTH_MM': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(269): message : see previous definition of 'GLUT_SCREEN_WIDTH_MM'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(378,1): warning C4005: 'GLUT_SCREEN_HEIGHT_MM': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(270): message : see previous definition of 'GLUT_SCREEN_HEIGHT_MM'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(379,1): warning C4005: 'GLUT_MENU_NUM_ITEMS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(271): message : see previous definition of 'GLUT_MENU_NUM_ITEMS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(380,1): warning C4005: 'GLUT_DISPLAY_MODE_POSSIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(272): message : see previous definition of 'GLUT_DISPLAY_MODE_POSSIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(381,1): warning C4005: 'GLUT_INIT_WINDOW_X': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(273): message : see previous definition of 'GLUT_INIT_WINDOW_X'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(382,1): warning C4005: 'GLUT_INIT_WINDOW_Y': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(274): message : see previous definition of 'GLUT_INIT_WINDOW_Y'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(383,1): warning C4005: 'GLUT_INIT_WINDOW_WIDTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(275): message : see previous definition of 'GLUT_INIT_WINDOW_WIDTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(384,1): warning C4005: 'GLUT_INIT_WINDOW_HEIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(276): message : see previous definition of 'GLUT_INIT_WINDOW_HEIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(385,1): warning C4005: 'GLUT_INIT_DISPLAY_MODE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(277): message : see previous definition of 'GLUT_INIT_DISPLAY_MODE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(387,1): warning C4005: 'GLUT_ELAPSED_TIME': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(278): message : see previous definition of 'GLUT_ELAPSED_TIME'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(390,1): warning C4005: 'GLUT_WINDOW_FORMAT_ID': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(279): message : see previous definition of 'GLUT_WINDOW_FORMAT_ID'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(395,1): warning C4005: 'GLUT_HAS_KEYBOARD': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(284): message : see previous definition of 'GLUT_HAS_KEYBOARD'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(396,1): warning C4005: 'GLUT_HAS_MOUSE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(285): message : see previous definition of 'GLUT_HAS_MOUSE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(397,1): warning C4005: 'GLUT_HAS_SPACEBALL': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(286): message : see previous definition of 'GLUT_HAS_SPACEBALL'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(398,1): warning C4005: 'GLUT_HAS_DIAL_AND_BUTTON_BOX': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(287): message : see previous definition of 'GLUT_HAS_DIAL_AND_BUTTON_BOX'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(399,1): warning C4005: 'GLUT_HAS_TABLET': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(288): message : see previous definition of 'GLUT_HAS_TABLET'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(400,1): warning C4005: 'GLUT_NUM_MOUSE_BUTTONS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(289): message : see previous definition of 'GLUT_NUM_MOUSE_BUTTONS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(401,1): warning C4005: 'GLUT_NUM_SPACEBALL_BUTTONS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(290): message : see previous definition of 'GLUT_NUM_SPACEBALL_BUTTONS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(402,1): warning C4005: 'GLUT_NUM_BUTTON_BOX_BUTTONS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(291): message : see previous definition of 'GLUT_NUM_BUTTON_BOX_BUTTONS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(403,1): warning C4005: 'GLUT_NUM_DIALS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(292): message : see previous definition of 'GLUT_NUM_DIALS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(404,1): warning C4005: 'GLUT_NUM_TABLET_BUTTONS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(293): message : see previous definition of 'GLUT_NUM_TABLET_BUTTONS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(407,1): warning C4005: 'GLUT_DEVICE_IGNORE_KEY_REPEAT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(294): message : see previous definition of 'GLUT_DEVICE_IGNORE_KEY_REPEAT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(408,1): warning C4005: 'GLUT_DEVICE_KEY_REPEAT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(295): message : see previous definition of 'GLUT_DEVICE_KEY_REPEAT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(409,1): warning C4005: 'GLUT_HAS_JOYSTICK': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(296): message : see previous definition of 'GLUT_HAS_JOYSTICK'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(410,1): warning C4005: 'GLUT_OWNS_JOYSTICK': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(297): message : see previous definition of 'GLUT_OWNS_JOYSTICK'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(411,1): warning C4005: 'GLUT_JOYSTICK_BUTTONS': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(298): message : see previous definition of 'GLUT_JOYSTICK_BUTTONS'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(412,1): warning C4005: 'GLUT_JOYSTICK_AXES': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(299): message : see previous definition of 'GLUT_JOYSTICK_AXES'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(413,1): warning C4005: 'GLUT_JOYSTICK_POLL_RATE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(300): message : see previous definition of 'GLUT_JOYSTICK_POLL_RATE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(418,1): warning C4005: 'GLUT_OVERLAY_POSSIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(305): message : see previous definition of 'GLUT_OVERLAY_POSSIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(419,1): warning C4005: 'GLUT_LAYER_IN_USE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(306): message : see previous definition of 'GLUT_LAYER_IN_USE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(420,1): warning C4005: 'GLUT_HAS_OVERLAY': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(307): message : see previous definition of 'GLUT_HAS_OVERLAY'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(421,1): warning C4005: 'GLUT_TRANSPARENT_INDEX': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(308): message : see previous definition of 'GLUT_TRANSPARENT_INDEX'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(422,1): warning C4005: 'GLUT_NORMAL_DAMAGED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(309): message : see previous definition of 'GLUT_NORMAL_DAMAGED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(423,1): warning C4005: 'GLUT_OVERLAY_DAMAGED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(310): message : see previous definition of 'GLUT_OVERLAY_DAMAGED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(427,1): warning C4005: 'GLUT_VIDEO_RESIZE_POSSIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(315): message : see previous definition of 'GLUT_VIDEO_RESIZE_POSSIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(428,1): warning C4005: 'GLUT_VIDEO_RESIZE_IN_USE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(316): message : see previous definition of 'GLUT_VIDEO_RESIZE_IN_USE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(429,1): warning C4005: 'GLUT_VIDEO_RESIZE_X_DELTA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(317): message : see previous definition of 'GLUT_VIDEO_RESIZE_X_DELTA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(430,1): warning C4005: 'GLUT_VIDEO_RESIZE_Y_DELTA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(318): message : see previous definition of 'GLUT_VIDEO_RESIZE_Y_DELTA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(431,1): warning C4005: 'GLUT_VIDEO_RESIZE_WIDTH_DELTA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(319): message : see previous definition of 'GLUT_VIDEO_RESIZE_WIDTH_DELTA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(432,1): warning C4005: 'GLUT_VIDEO_RESIZE_HEIGHT_DELTA': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(320): message : see previous definition of 'GLUT_VIDEO_RESIZE_HEIGHT_DELTA'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(433,1): warning C4005: 'GLUT_VIDEO_RESIZE_X': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(321): message : see previous definition of 'GLUT_VIDEO_RESIZE_X'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(434,1): warning C4005: 'GLUT_VIDEO_RESIZE_Y': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(322): message : see previous definition of 'GLUT_VIDEO_RESIZE_Y'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(435,1): warning C4005: 'GLUT_VIDEO_RESIZE_WIDTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(323): message : see previous definition of 'GLUT_VIDEO_RESIZE_WIDTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(436,1): warning C4005: 'GLUT_VIDEO_RESIZE_HEIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(324): message : see previous definition of 'GLUT_VIDEO_RESIZE_HEIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(440,1): warning C4005: 'GLUT_NORMAL': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(329): message : see previous definition of 'GLUT_NORMAL'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(441,1): warning C4005: 'GLUT_OVERLAY': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(330): message : see previous definition of 'GLUT_OVERLAY'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(444,1): warning C4005: 'GLUT_ACTIVE_SHIFT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(335): message : see previous definition of 'GLUT_ACTIVE_SHIFT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(445,1): warning C4005: 'GLUT_ACTIVE_CTRL': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(336): message : see previous definition of 'GLUT_ACTIVE_CTRL'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(446,1): warning C4005: 'GLUT_ACTIVE_ALT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(337): message : see previous definition of 'GLUT_ACTIVE_ALT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(450,1): warning C4005: 'GLUT_CURSOR_RIGHT_ARROW': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(342): message : see previous definition of 'GLUT_CURSOR_RIGHT_ARROW'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(451,1): warning C4005: 'GLUT_CURSOR_LEFT_ARROW': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(343): message : see previous definition of 'GLUT_CURSOR_LEFT_ARROW'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(453,1): warning C4005: 'GLUT_CURSOR_INFO': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(344): message : see previous definition of 'GLUT_CURSOR_INFO'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(454,1): warning C4005: 'GLUT_CURSOR_DESTROY': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(345): message : see previous definition of 'GLUT_CURSOR_DESTROY'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(455,1): warning C4005: 'GLUT_CURSOR_HELP': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(346): message : see previous definition of 'GLUT_CURSOR_HELP'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(456,1): warning C4005: 'GLUT_CURSOR_CYCLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(347): message : see previous definition of 'GLUT_CURSOR_CYCLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(457,1): warning C4005: 'GLUT_CURSOR_SPRAY': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(348): message : see previous definition of 'GLUT_CURSOR_SPRAY'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(458,1): warning C4005: 'GLUT_CURSOR_WAIT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(349): message : see previous definition of 'GLUT_CURSOR_WAIT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(459,1): warning C4005: 'GLUT_CURSOR_TEXT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(350): message : see previous definition of 'GLUT_CURSOR_TEXT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(460,1): warning C4005: 'GLUT_CURSOR_CROSSHAIR': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(351): message : see previous definition of 'GLUT_CURSOR_CROSSHAIR'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(462,1): warning C4005: 'GLUT_CURSOR_UP_DOWN': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(352): message : see previous definition of 'GLUT_CURSOR_UP_DOWN'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(463,1): warning C4005: 'GLUT_CURSOR_LEFT_RIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(353): message : see previous definition of 'GLUT_CURSOR_LEFT_RIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(465,1): warning C4005: 'GLUT_CURSOR_TOP_SIDE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(354): message : see previous definition of 'GLUT_CURSOR_TOP_SIDE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(466,1): warning C4005: 'GLUT_CURSOR_BOTTOM_SIDE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(355): message : see previous definition of 'GLUT_CURSOR_BOTTOM_SIDE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(467,1): warning C4005: 'GLUT_CURSOR_LEFT_SIDE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(356): message : see previous definition of 'GLUT_CURSOR_LEFT_SIDE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(468,1): warning C4005: 'GLUT_CURSOR_RIGHT_SIDE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(357): message : see previous definition of 'GLUT_CURSOR_RIGHT_SIDE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(469,1): warning C4005: 'GLUT_CURSOR_TOP_LEFT_CORNER': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(358): message : see previous definition of 'GLUT_CURSOR_TOP_LEFT_CORNER'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(470,1): warning C4005: 'GLUT_CURSOR_TOP_RIGHT_CORNER': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(359): message : see previous definition of 'GLUT_CURSOR_TOP_RIGHT_CORNER'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(471,1): warning C4005: 'GLUT_CURSOR_BOTTOM_RIGHT_CORNER': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(360): message : see previous definition of 'GLUT_CURSOR_BOTTOM_RIGHT_CORNER'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(472,1): warning C4005: 'GLUT_CURSOR_BOTTOM_LEFT_CORNER': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(361): message : see previous definition of 'GLUT_CURSOR_BOTTOM_LEFT_CORNER'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(474,1): warning C4005: 'GLUT_CURSOR_INHERIT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(362): message : see previous definition of 'GLUT_CURSOR_INHERIT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(476,1): warning C4005: 'GLUT_CURSOR_NONE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(363): message : see previous definition of 'GLUT_CURSOR_NONE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(478,1): warning C4005: 'GLUT_CURSOR_FULL_CROSSHAIR': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(364): message : see previous definition of 'GLUT_CURSOR_FULL_CROSSHAIR'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(482,23): error C2375: 'glutInit_ATEXIT_HACK': redefinition; different linkage
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(623): message : see declaration of 'glutInit_ATEXIT_HACK'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(499,22): error C2375: 'glutCreateWindow_ATEXIT_HACK': redefinition; different linkage
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(625): message : see declaration of 'glutCreateWindow_ATEXIT_HACK'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(545,22): error C2375: 'glutCreateMenu_ATEXIT_HACK': redefinition; different linkage
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(627): message : see declaration of 'glutCreateMenu_ATEXIT_HACK'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(661,1): warning C4005: 'GLUT_KEY_REPEAT_OFF': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(376): message : see previous definition of 'GLUT_KEY_REPEAT_OFF'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(662,1): warning C4005: 'GLUT_KEY_REPEAT_ON': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(377): message : see previous definition of 'GLUT_KEY_REPEAT_ON'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(663,1): warning C4005: 'GLUT_KEY_REPEAT_DEFAULT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(378): message : see previous definition of 'GLUT_KEY_REPEAT_DEFAULT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(666,1): warning C4005: 'GLUT_JOYSTICK_BUTTON_A': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(380): message : see previous definition of 'GLUT_JOYSTICK_BUTTON_A'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(667,1): warning C4005: 'GLUT_JOYSTICK_BUTTON_B': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(381): message : see previous definition of 'GLUT_JOYSTICK_BUTTON_B'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(668,1): warning C4005: 'GLUT_JOYSTICK_BUTTON_C': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(382): message : see previous definition of 'GLUT_JOYSTICK_BUTTON_C'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(669,1): warning C4005: 'GLUT_JOYSTICK_BUTTON_D': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(383): message : see previous definition of 'GLUT_JOYSTICK_BUTTON_D'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(677,1): warning C4005: 'GLUT_GAME_MODE_ACTIVE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(388): message : see previous definition of 'GLUT_GAME_MODE_ACTIVE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(678,1): warning C4005: 'GLUT_GAME_MODE_POSSIBLE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(389): message : see previous definition of 'GLUT_GAME_MODE_POSSIBLE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(679,1): warning C4005: 'GLUT_GAME_MODE_WIDTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(390): message : see previous definition of 'GLUT_GAME_MODE_WIDTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(680,1): warning C4005: 'GLUT_GAME_MODE_HEIGHT': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(391): message : see previous definition of 'GLUT_GAME_MODE_HEIGHT'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(681,1): warning C4005: 'GLUT_GAME_MODE_PIXEL_DEPTH': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(392): message : see previous definition of 'GLUT_GAME_MODE_PIXEL_DEPTH'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(682,1): warning C4005: 'GLUT_GAME_MODE_REFRESH_RATE': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(393): message : see previous definition of 'GLUT_GAME_MODE_REFRESH_RATE'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\GL\glut.h(683,1): warning C4005: 'GLUT_GAME_MODE_DISPLAY_CHANGED': macro redefinition
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Dependencies\FREEGLUT\freeglut_std.h(394): message : see previous definition of 'GLUT_GAME_MODE_DISPLAY_CHANGED'
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Fovea\shaderDemo.cpp(324,2): error C2065: 'glutInit_ATEXIT_HACK': undeclared identifier
-D:\BIF_S4_SS_2020\ecg\project\Fovea\Fovea\shaderDemo.cpp(333,2): error C2065: 'glutCreateWindow_ATEXIT_HACK': undeclared identifier
+﻿shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glewInit referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowPosition referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutMainLoop referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutSwapBuffers referenced in function "void __cdecl renderScene(void)" (?renderScene@@YAXXZ)
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutIdleFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutKeyboardFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutReshapeFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutDisplayFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutMouseFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutMotionFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp___glutCreateWindowWithExit referenced in function glutCreateWindow_ATEXIT_HACK
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutLeaveMainLoop referenced in function "void __cdecl processKeys(unsigned char,int,int)" (?processKeys@@YAXEHH@Z)
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutMouseWheelFunc referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutSetOption referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitContextVersion referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitContextFlags referenced in function main
+shaderDemo.obj : error LNK2019: unresolved external symbol __imp_glutInitContextProfile referenced in function main
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+shaderDemo.obj : error LNK2001: unresolved external symbol __imp_glewExperimental
+vsMathLib.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+vsMathLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3fv
+vsMathLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBufferSubData
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewAttachShader
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBindAttribLocation
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewCompileShader
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewCreateProgram
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewCreateShader
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewDeleteProgram
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewDeleteShader
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetActiveUniform
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramInfoLog
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderInfoLog
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewLinkProgram
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewShaderSource
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewValidateProgram
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBindFragDataLocation
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetFragDataLocation
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1f
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1i
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1iv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform1uiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform2dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform2fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform2iv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform2uiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform3dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform3fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform3iv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform3uiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform4dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform4fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform4iv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniform4uiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2x3dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2x3fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2x4dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix2x4fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3x2dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3x2fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3x4dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix3x4fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4x2dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4x2fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4x3dv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewProgramUniformMatrix4x3fv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewBindBufferRange
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetActiveUniformBlockName
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetActiveUniformBlockiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetActiveUniformName
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewGetActiveUniformsiv
+vsShaderLib.obj : error LNK2001: unresolved external symbol __imp___glewUniformBlockBinding
+C:\Users\lukas\Documents\CGE\project\Fovea\Dependencies\freeglut.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\lukas\Documents\CGE\project\Fovea\Dependencies\glew32s.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\lukas\Documents\CGE\project\Fovea\Dependencies\glew32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\lukas\Documents\CGE\project\Fovea\Dependencies\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\lukas\Documents\CGE\project\Fovea\x64\Debug\Fovea.exe : fatal error LNK1120: 90 unresolved externals

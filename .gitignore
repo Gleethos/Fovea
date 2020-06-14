@@ -1,1 +1,5 @@
 .vs/
+Debug/
+Fovea/Debug/
+Fovea/x64
+x64/Debug
