@@ -1,5 +1,8 @@
 .vs/
 Debug/
+!Debug/freeglut.dll
+!Debug/glew32.dll
+!Debug/glut32.dll
 Fovea/Debug/
 Fovea/x64
 x64/Debug

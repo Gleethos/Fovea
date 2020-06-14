@@ -342,7 +342,7 @@ int main(int argc, char **argv) {
 
 	glutInitWindowPosition(100,100);
 	glutInitWindowSize(512,512);
-	glutCreateWindow("Lighthouse3D - Simple Shader Demo");
+	glutCreateWindow("Foveated Rendering - Hinterleiter, Nepp");
 
 //  Callback Registration
 	glutDisplayFunc(renderScene);
