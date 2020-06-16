@@ -1,7 +1,8 @@
+#version 330
 
 // CONTEXT VARIABLES: 
 //~~~~~~~~~~~~~~~~~~~
-//(uniform! -> https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/uniform.php)
+//(uniform! -> https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/uniform.php )
 
 layout (std140) uniform Params 
 {
@@ -13,44 +14,52 @@ layout (std140) uniform Params
 	// | Base:
 	// \-------
 
-	float base = 2;
+	float base;// = 2;
 
 	// | Radius: (... of view cone)
 	// \-------------------------------
 
 	float r;
 	//float rp; // = log(2, r); //log(base, ..);
-}//________________________________________________________
+};//________________________________________________________
 
+layout (std140) uniform Matrices {
+	mat4 pvm;
+} ;
 
+// UTILITY :
+
+float _log(float base, float x) {
+    return log(x) / log(base);
+}
 
 // SHADER: 
-//~~~~~~~~
+// ~~~~~~~~
 
-in vec3 v; // Vertecies!
-
+in vec3 v; // vertices !
+out vec2 pc;
 out vec4 gl_Position;
 
 void main()
 {
-	vec2 fv_vec = vec2( v.x-fx, v.y-fy )
+	vec2 fv_vec = vec2( v.x-fx, v.y-fy );
 
 	float vp = _log( // logarithmic distance!
 		base,
-		fpow(fpow(fv_vec.x, 2)+fpow(fv_vec.y, 2), 0.5) // distance
+		pow(pow(fv_vec.x, 2)+pow(fv_vec.y, 2), 0.5) // distance
 	);
-	float va = arctan( fv_vec.y / fv_vec.x ); // polar angle
+	float va = atan( fv_vec.y / fv_vec.x ); // polar angle
 
-	vec3 v_pol; // vertecies radial
+	vec3 v_pol; // vertices  radial
 
 	v_pol.x = vp;
 	v_pol.y = va;
-
-    	gl_Position = vec4( v_pol, 1.0 ); 
-}
-
-// UTILITY :
-
-float _log(double base, float x) {
-    return log(x) / log(base);
+	
+	pc = vec2(v_pol.x, v_pol.y);
+	
+	vec4 position;
+	
+	position = vec4( v_pol, 1.0 );
+	
+	gl_Position = pvm * position ;
 }

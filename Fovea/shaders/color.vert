@@ -17,6 +17,5 @@ void main()
 #if defined(_DEBUG_VERSION)
 	 color = position;
 #endif
-
 	gl_Position = pvm * position ;
 } 

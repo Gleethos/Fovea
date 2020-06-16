@@ -41,7 +41,7 @@ float camX, camY, camZ;
 int startX, startY, tracking = 0;
 
 // Camera Spherical Coordinates
-float alpha = -43.0f, beta = 48.0f;
+float alpha = -4, beta = 5;
 float r = 5.25f;
 
 // Frame counting and FPS computation
@@ -50,6 +50,9 @@ char s[32];
 
 GLuint vao;
 
+int width = 1024;
+int height = 512;
+
 
 // ------------------------------------------------------------
 //
@@ -57,6 +60,11 @@ GLuint vao;
 //
 
 void changeSize(int w, int h) {
+
+	width = w;
+	height = h;
+
+	printf("resize: new width, height = %f, %f\n", float(width), float(height));
 
 	float ratio;
 	// Prevent a divide by zero, when window is too short
@@ -75,8 +83,6 @@ void changeSize(int w, int h) {
 // Nepp & Hinterleitner - Windows - Foveated Rendering (log polar transformation shaders...)
 // Render stuff
 //
-
-
 
 void renderScene(void) {
 
@@ -223,30 +229,44 @@ void mouseWheel(int wheel, int direction, int x, int y) {
 // Shader Stuff
 //
 
-
 GLuint setupShaders() {
 
 	// Shader for models
 	shader.init();
-	shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/color.vert");
-	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/color.frag");
+	//shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/color.vert");
+	//shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/color.frag");
 
 	// set semantics for the shader variables
 	shader.setProgramOutput(0,"outputF");
 	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
-	
-	/*
+
+	// our shader
+	// ------------------------------------------------------------------------------
+
+	// vertex polarization shader
+	shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/vertex_polarization.txt");
+	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polar_interpolarization.txt");
+
+	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "v");
+
 	struct Params {
+
+		Params(float fx_, float fy_, float base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
+
 		float fx;
 		float fy;
 		float base;
 		float r;
-	}
-	// Todo: Fill!
-	shader.setBlock("Params", &Params);
-	
-	*/
+	};
 
+	// Todo: Fill!
+
+	Params params = Params(width / 2, height / 2, 2, 300);
+
+	printf("shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
+
+	shader.setBlock("Params", &params);
+	
 	shader.prepareProgram();
 
 	// this is only useful for the uniform version of the shader
@@ -254,7 +274,7 @@ GLuint setupShaders() {
 	shader.setUniform("color", c);
 
 
-	printf("InfoLog for Hello World Shader\n%s\n\n", shader.getAllInfoLogs().c_str());
+	printf("InfoLog for Shader\n%s\n\n", shader.getAllInfoLogs().c_str());
 	
 	return(shader.isProgramValid());
 }
@@ -265,8 +285,6 @@ GLuint setupShaders() {
 //
 // Model loading and OpenGL setup
 //
-
-
 
 void initOpenGL()
 {
@@ -351,12 +369,12 @@ int main(int argc, char **argv) {
 	glutInitContextFlags(GLUT_DEBUG);
 
 	glutInitWindowPosition(150, 150);
-	glutInitWindowSize(1024, 512);
-	glutCreateWindow("Foveated Rendering - Hinterleiter, Nepp");
+	glutInitWindowSize(width, height);
+	glutCreateWindow("Nepp & Hinterleitner - Windows - Foveated Rendering");
 
 //  Callback Registration
 	glutDisplayFunc(renderScene);
-	glutReshapeFunc(changeSize);
+	glutReshapeFunc(&changeSize);
 
 //	use timer function instead of renderScene as idle function
 	glutTimerFunc(1000 / 60.0, &timer, 1);
