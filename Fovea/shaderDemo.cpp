@@ -326,6 +326,16 @@ void initVSL() {
 
 // ------------------------------------------------------------
 //
+// Timer function for fixed framerate
+//
+
+void timer(int value) {
+	glutPostRedisplay();
+	glutTimerFunc(1000 / 60.0, &timer, 1);
+}
+
+// ------------------------------------------------------------
+//
 // Main function
 //
 
@@ -340,21 +350,24 @@ int main(int argc, char **argv) {
 	glutInitContextProfile (GLUT_CORE_PROFILE );
 	glutInitContextFlags(GLUT_DEBUG);
 
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(512,512);
+	glutInitWindowPosition(150, 150);
+	glutInitWindowSize(1024, 512);
 	glutCreateWindow("Foveated Rendering - Hinterleiter, Nepp");
 
 //  Callback Registration
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);
-	glutIdleFunc(renderScene);
+
+//	use timer function instead of renderScene as idle function
+	glutTimerFunc(1000 / 60.0, &timer, 1);
+	// glutIdleFunc(renderScene); 
 
 //	Mouse and Keyboard Callbacks
 	glutKeyboardFunc(processKeys);
 	glutMouseFunc(processMouseButtons);
 	glutMotionFunc(processMouseMotion);
 
-	glutMouseWheelFunc ( mouseWheel ) ;
+	glutMouseWheelFunc(mouseWheel);
 
 //	return from main loop
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
