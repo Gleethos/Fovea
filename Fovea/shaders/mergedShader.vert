@@ -68,8 +68,6 @@ vec4 fovea_to_cartesian(vec4 in_) {
 }
 
 void main() {
-	//pc = pvm * fovea_to_log_polar(position);
-	//pc = position;
 	pc = position;
 	
 	//gl_Position = pvm * fovea_to_log_polar(position);
