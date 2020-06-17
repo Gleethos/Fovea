@@ -64,7 +64,7 @@ void changeSize(int w, int h) {
 	width = w;
 	height = h;
 
-	printf("resize: new width, height = %f, %f\n", float(width), float(height));
+	// printf("resize: new width, height = %f, %f\n", float(width), float(height));
 
 	float ratio;
 	// Prevent a divide by zero, when window is too short
@@ -204,9 +204,6 @@ void processMouseMotion(int xx, int yy)
 }
 
 
-
-
-
 void mouseWheel(int wheel, int direction, int x, int y) {
 
 	r += direction * 0.1f;
@@ -222,8 +219,6 @@ void mouseWheel(int wheel, int direction, int x, int y) {
 }
 
 
-
-
 // --------------------------------------------------------
 //
 // Shader Stuff
@@ -233,24 +228,24 @@ GLuint setupShaders() {
 
 	// Shader for models
 	shader.init();
-	//shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/color.vert");
-	//shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/color.frag");
-
+	shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/mergedShader.vert");
+	
 	// set semantics for the shader variables
-	shader.setProgramOutput(0,"outputF");
+	shader.setProgramOutput(0, "outputFragment");
 	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
 
 	// our shader
 	// ------------------------------------------------------------------------------
 
 	// vertex polarization shader
-	shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/vertex_polarization.txt");
-	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polar_interpolarization.txt");
+	//shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "v");
+	//shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/vertex_polarization.txt");
 
-	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "v");
+	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/mergedShader.frag");
+	//shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polar_interpolarization.txt");
 
+	
 	struct Params {
-
 		Params(float fx_, float fy_, float base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
 
 		float fx;
@@ -259,26 +254,19 @@ GLuint setupShaders() {
 		float r;
 	};
 
-	// Todo: Fill!
-
 	Params params = Params(width / 2, height / 2, 2, 300);
+	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 
 	printf("shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
-	shader.setBlock("Params", &params);
-	
 	shader.prepareProgram();
 
-	// this is only useful for the uniform version of the shader
-	float c[4] = {1.0f, 0.8f, 0.2f, 1.0f};
-	shader.setUniform("color", c);
+	shader.setBlock("Params", &params);
 
-
-	printf("InfoLog for Shader\n%s\n\n", shader.getAllInfoLogs().c_str());
+	printf("InfoLog for Shaders\n%s\n\n", shader.getAllInfoLogs().c_str());
 	
 	return(shader.isProgramValid());
 }
-
 
 
 // ------------------------------------------------------------

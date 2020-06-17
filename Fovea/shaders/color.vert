@@ -4,7 +4,7 @@
 
 layout (std140) uniform Matrices {
 	mat4 pvm;
-} ;
+};
 
 in vec4 position;
 
@@ -12,8 +12,7 @@ in vec4 position;
 out vec4 color;
 #endif
 
-void main()
-{
+void main() {
 #if defined(_DEBUG_VERSION)
 	 color = position;
 #endif
