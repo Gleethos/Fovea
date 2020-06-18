@@ -20,13 +20,14 @@ layout (std140) uniform Params
 	// \-------------------------------
 	float r;// = ...;
 	//float rp;// = _log(base, r); // log scaled r...
-}; //________________________________________________________
-//===========================================================
-
+};
+//=========================================================================================//
+// TAKES TEXTURE COORDS FROM VERTEX SHADER AND HANDS TRANSFORMS TO CARTESIAN HERE!         //
+//=========================================================================================//
 
 //INPUTS :
 
-in vec4 pc; // pixel coordinate of current output which comes from vertex shader
+in vec2 texCoordAsVertex; // pixel coordinate of current output which comes from vertex shader
 uniform sampler2D polBufferTexture; //---> FROM POLAR BUFFER : has been set by this shader in "render_to_polar_buffer == 1" mode!
 
 uniform int is_rendering_to_polar_texture;
@@ -44,7 +45,8 @@ vec4 colorized_polar(vec4 in_)
 }
 
 // transform polar coordinates to cartesian coordinates
-vec2 fovea_to_cartesian(vec2 in_) {
+vec2 fovea_to_cartesian(vec2 in_) 
+{
 	float vp = in_.x; // p is x-direction in output
   	float va = in_.y; // alpha is y-direction in output
   
@@ -58,14 +60,9 @@ vec2 fovea_to_cartesian(vec2 in_) {
 void main()
 {
 	//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(gl_TexCoord[0]));
-	if (is_rendering_to_polar_texture == 1) 
-	{
-		outputFragment = pc;
-	}
-	else
-	{
-		outputFragment = pc;
-		//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(vector...)));
-		//outputFragment = texture2D(polBufferTexture, vec2(512, 256));
-	}
+
+	outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(texCoordAsVertex)));
+	
+	//outputFragment = texture2D(polBufferTexture, vec2(512, 256));
+
 }

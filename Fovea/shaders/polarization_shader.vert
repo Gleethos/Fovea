@@ -20,9 +20,10 @@ layout (std140) uniform Params
 	// \-------------------------------
 	float r;// = ...;
 	//float rp;// = _log(base, r); // log scaled r...
-}; //________________________________________________________
-//===========================================================
-
+}; 
+//=========================================================================================//
+// TAKES MODEL VERTECIES AND TRANSFORMS THEM TO LOG POLAR! -=> NO MORE PROCESSING IN FRAG..//
+//=========================================================================================//
 
 layout (std140) uniform Matrices {
 	mat4 pvm;
@@ -84,8 +85,16 @@ void main()
 {
 	pc = position;
 	
-	//gl_Position = pvm * position;
+	
 	//gl_Position = pvm * fovea_to_log_polar(position); // <--- goal!
 	
 	gl_Position = pvm * fovea_to_cartesian(fovea_to_log_polar(position)); // transform to log polar and back to test if the two transformations are inverse
+	//gl_Position = pvm * position; // <- ^ These produce same result: Proves that one is inverse to th other...
 } 
+
+
+
+
+
+
+
