@@ -32,7 +32,9 @@
 #include "VSShaderlib.h"
 
 VSMathLib *vsml;
-VSShaderLib shader;
+VSShaderLib polarization_shader; // Vertecies to polar -=> fragments to polarTexture
+								 // VERTEX SHADER STEP -->  FRAGMENT SHADER STEP
+VSShaderLib to_cartesian_shader; // Inputs to outputs  -=> polarTexture pixels to cartesian
 
 // Camera Position
 float camX, camY, camZ;
@@ -155,7 +157,7 @@ void initializeFrameBuffer() {
 
 	polarTextureID = colorBuffers[0];
 
-	shader.setUniform("polBufferTexture", &polarTextureID); // set id of texture to use it as sampler2D in renderer
+	polarization_shader.setUniform("polBufferTexture", &polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 	printf("our buffer id: %d\n", polarBufferID);
 	printf("our texture id: %d\n", polarTextureID);
@@ -205,7 +207,7 @@ void basicRendering() {
 	// set the camera using a function similar to gluLookAt
 	vsml->lookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
 	// use our shader
-	glUseProgram(shader.getProgramIndex());
+	glUseProgram(polarization_shader.getProgramIndex());
 	// send matrices to uniform buffer
 	vsml->matricesToGL();
 	// render VAO
@@ -220,7 +222,7 @@ void renderScene(void) {
 	//	---------------------------------
 	//	binding to our buffer section
 	
-	shader.setUniform("is_rendering_to_polar_texture", 1);
+	polarization_shader.setUniform("is_rendering_to_polar_texture", 1);
 	bindFrameBuffer(polarBufferID, width, height);
 
 	basicRendering();
@@ -228,7 +230,7 @@ void renderScene(void) {
 	//	---------------------------------
 	//	binding to screen buffer (output)
 
-	shader.setUniform("is_rendering_to_polar_texture", 0);
+	polarization_shader.setUniform("is_rendering_to_polar_texture", 0);
 	bindFrameBuffer(0, width, height);
 
 	basicRendering();
@@ -250,12 +252,12 @@ void processKeys(unsigned char key, int xx, int yy)
 
 		case 43: // + key
 			radius += 2;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case 45: // - key
 			radius -= 2;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case 'c': 
@@ -273,22 +275,22 @@ static void specialKeyPressed(int key, int x, int y)
 	switch (key) {
 		case GLUT_KEY_UP:
 			focalPointY += 5;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_DOWN:
 			focalPointY -= 5;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_LEFT:
 			focalPointX -= 5;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_RIGHT:
 			focalPointX += 5;
-			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
 			break;
 	}
 }
@@ -393,12 +395,14 @@ void mouseWheel(int wheel, int direction, int x, int y) {
 GLuint setupShaders() {
 
 	// Shader for models
-	shader.init();
-	shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/mergedShader.vert");
+	polarization_shader.init();
+	polarization_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/polarization_shader.vert");
 	
 	// set semantics for the shader variables
-	shader.setProgramOutput(0, "outputFragment");
-	shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
+	polarization_shader.setProgramOutput(0, "outputFragment");
+	polarization_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
+	
+	polarization_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polarization_shader.frag");
 
 	// our shader
 	// ------------------------------------------------------------------------------
@@ -407,21 +411,19 @@ GLuint setupShaders() {
 	//shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "v");
 	//shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/vertex_polarization.txt");
 
-	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/mergedShader.frag");
-	//shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polar_interpolarization.txt");
 
 	Params params = Params(focalPointX, focalPointY, 2, radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 
 	printf("shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
-	shader.prepareProgram();
+	polarization_shader.prepareProgram();
 
-	shader.setBlock("Params", &params);
+	polarization_shader.setBlock("Params", &params);
 
-	printf("InfoLog for Shaders\n%s\n\n", shader.getAllInfoLogs().c_str());
+	printf("InfoLog for Shaders\n%s\n\n", polarization_shader.getAllInfoLogs().c_str());
 	
-	return(shader.isProgramValid());
+	return(polarization_shader.isProgramValid());
 }
 
 
