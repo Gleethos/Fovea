@@ -53,7 +53,7 @@ GLuint vao;
 int width = 1024;
 int height = 512;
 
-int polarBufferID = 0;
+GLuint polarBufferID = 0;
 int polarTextureID = 0;
 
 // ------------------------------------------------------------
@@ -71,7 +71,7 @@ int createFramebuffer() {
 
 void bindFrameBuffer(int frameBuffer, int width, int height) {
 	if (frameBuffer != 0)
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindTexture(GL_TEXTURE_2D, 0); // to make sure the texture is not bound
 
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 	glViewport(0, 0, width, height);
@@ -93,13 +93,45 @@ int createTextureAttachment(int width, int height) {
 }
 
 void initializeFrameBuffer() {
-	polarBufferID = createFramebuffer();
-	polarTextureID = createTextureAttachment(width, height);
+	//polarBufferID = createFramebuffer();
+	//polarTextureID = createTextureAttachment(width, height);
+
+	// set up floating point framebuffer to render scene to
+	
+	glGenFramebuffers(1, &polarBufferID);
+	glBindFramebuffer(GL_FRAMEBUFFER, polarBufferID);
+	unsigned int colorBuffers[1];
+	glGenTextures(1, colorBuffers);
+	for (unsigned int i = 0; i < 1; i++)
+	{
+		glBindTexture(GL_TEXTURE_2D, colorBuffers[i]);
+		glTexImage2D(
+			GL_TEXTURE_2D, 0, GL_RGBA16F, width, width, 0, GL_RGBA, GL_FLOAT, NULL
+		);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		// attach texture to framebuffer
+		glFramebufferTexture2D(
+			GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, colorBuffers[i], 0
+		);
+	}
+
+	unsigned int attachments[1] = { GL_COLOR_ATTACHMENT0 };
+	glDrawBuffers(1, attachments);
+
+	polarTextureID = colorBuffers[0];
+
+	// bind our buffer
+	glBindFramebuffer(GL_FRAMEBUFFER, polarBufferID);
+
+	shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 	printf("polar buffer id: %d\n", polarBufferID);
 	printf("polar texture id: %d\n", polarTextureID);
 
-	bindFrameBuffer(0, width, height); // binds back to screen
+	//bindFrameBuffer(0, width, height); // binds back to screen
 }
 
 // ------------------------------------------------------------
@@ -132,43 +164,9 @@ void changeSize(int w, int h) {
 // Render stuff
 //
 
-void renderScene(void) {
-
-	//	--------------------------
-	//	binding to buffer section
-
-	//bindFrameBuffer(polarBufferID, width, height);
-	shader.setUniform("to_polar_buffer", 1);
-	//shader.setUniform("polBuffer", 0);
-
-	//  --------------------------
-
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	// load identity matrices
-	vsml->loadIdentity(VSMathLib::VIEW);
-	vsml->loadIdentity(VSMathLib::MODEL);
-	// set the camera using a function similar to gluLookAt
-	vsml->lookAt(camX, camY, camZ, 0,0,0, 0,1,0);
-	// use our shader
-	glUseProgram(shader.getProgramIndex());
-	// send matrices to uniform buffer
-	vsml->matricesToGL();
-	// render VAO
-	glBindVertexArray(vao);
-	glDrawElements(GL_TRIANGLES, faceCount*3, GL_UNSIGNED_INT, 0);
-	 //swap buffers
-	//glutSwapBuffers();
-
-	//	--------------------------
-	//	binding to screen buffer
-
-	//bindFrameBuffer(0, width, height);
-	shader.setUniform("to_polar_buffer", 0);
-	//shader.setUniform("polBuffer", 0);
-
-	//  --------------------------
-
+void basicRendering() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	// load identity matrices
 	vsml->loadIdentity(VSMathLib::VIEW);
 	vsml->loadIdentity(VSMathLib::MODEL);
@@ -183,6 +181,45 @@ void renderScene(void) {
 	glDrawElements(GL_TRIANGLES, faceCount * 3, GL_UNSIGNED_INT, 0);
 	//swap buffers
 	glutSwapBuffers();
+}
+
+void renderScene(void) {
+
+	//	--------------------------
+	//	binding to our buffer section
+	
+	shader.setUniform("is_rendering_to_polar_texture", 1);
+	bindFrameBuffer(polarBufferID, width, height);
+	basicRendering();
+
+	//	--------------------------
+	//	binding to screen buffer (output)
+
+	shader.setUniform("is_rendering_to_polar_texture", 0);
+	bindFrameBuffer(0, width, height);
+	basicRendering();
+
+	//bindFrameBuffer(0, width, height);
+	//shader.setUniform("render_to_polar_buffer", 0);
+	//shader.setUniform("polBufferTexture", 0);
+
+	//  --------------------------
+	/*
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// load identity matrices
+	vsml->loadIdentity(VSMathLib::VIEW);
+	vsml->loadIdentity(VSMathLib::MODEL);
+	// set the camera using a function similar to gluLookAt
+	vsml->lookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
+	// use our shader
+	glUseProgram(shader.getProgramIndex());
+	// send matrices to uniform buffer
+	vsml->matricesToGL();
+	// render VAO
+	glBindVertexArray(vao);
+	glDrawElements(GL_TRIANGLES, faceCount * 3, GL_UNSIGNED_INT, 0);*/
+	//swap buffers
+	//glutSwapBuffers();
 }
 
 

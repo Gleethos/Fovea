@@ -25,15 +25,9 @@ layout (std140) uniform Params
 //INPUTS :
 
 in vec4 pc; // pixel coordinate of current output which comes from vertex shader
-uniform sampler2D polBuffer; //---> FROM POLAR BUFFER : has been set by this shader in "to_polar_buffer == 1" mode!
+uniform sampler2D polBufferTexture; //---> FROM POLAR BUFFER : has been set by this shader in "render_to_polar_buffer == 1" mode!
 
-// | Mode: ( log polar to -> frame buffer ...  OR ... polpixel to -> color buffer!! )
-	// \-------------------------------
-
-uniform int to_polar_buffer; 
-//~-=>  0 : performs carteesian transformation on "polpixel" !
-//~-=>  1 : simply return the pc from the vertex shader which will be stored in the polarBuffer... (becomes polpixel)
-
+uniform int is_rendering_to_polar_texture;
 
 // OUTPUTS :
 
@@ -41,12 +35,13 @@ layout(location = 0) out vec4 outputFragment;
 
 // LOGIC :
 
+// wrap input vector in colorized_polar function for future modifications of vector
 vec4 colorized_polar(vec4 in_)
 {
 	return in_;
 }
 
-vec4 fovea_to_cartesian(vec2 in_) {
+vec2 fovea_to_cartesian(vec2 in_) {
 	float vp = in_.x; // p is x-direction in output
   	float va = in_.y; // alpha is y-direction in output
   
@@ -59,21 +54,23 @@ vec4 fovea_to_cartesian(vec2 in_) {
 
 void main()
 {
-	//outputFragment = fovea_to_cartesian(vec4(gl_FragCoord.xyz, 1));
+	//outputFragment = vec4(1.0, 0.0, 0.0, 1.0);
+	//outputFragment = texture2D(polBufferTexture, vec2(1.0, 1.0));
 	//outputFragment = pc;
-	//outputFragment = vec4(fx, fy, base, r); // only to check if uniform block parameters are working
-	//outputFragment = vec4(1.0, 0.0, 1.0, 1.0);
 	
-	if(to_polar_buffer == 1)
+	//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(gl_TexCoord[0]));
+	if (is_rendering_to_polar_texture == 1) 
 	{
-		//outputFragment = colorized_polar(pc);
-		outputFragment = vec4(1.0, 0.0, 0.0, 1.0);
+		outputFragment = pc;
 	}
 	else
 	{
-		//outputFragment = texture2D(polBuffer, fovea_to_caresian(gl_TexCoord[0]));
-		//outputFragment = texture2D(polBuffer, gl_TexCoord[0]);
-		
-		outputFragment = vec4(0.0, 0.0, 1.0, 1.0);
+		outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(vec2(1.0, 1.0)));
 	}
+	
+	//outputFragment = texture2D(polBufferTexture, gl_TexCoord[0]);
+	//outputFragment = texture2D(polBufferTexture, vec2(1.0, 1.0));
+	
+	//outputFragment = vec4(0.0, 0.0, 1.0, 1.0);
+
 }

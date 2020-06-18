@@ -26,9 +26,15 @@ layout (std140) uniform Matrices {
 	mat4 pvm;
 };
 
+// INPUT:
+
 in vec4 position; 
 
-out vec4 pc; // out pc to send point coordinate data to fragment shader
+// OUTPUT:
+
+out vec4 pc; // out pc to send point coordinate data to fragment shader7
+
+// LOGIC:
 
 // UTILITY :
 float _log(float base, float x) {
@@ -72,5 +78,8 @@ void main() {
 	
 	//gl_Position = pvm * fovea_to_log_polar(position);
 	//gl_Position = pvm * position;
-	gl_Position = pvm * fovea_to_cartesian(fovea_to_log_polar(position)); // transform to log polar and 
+	
+	gl_Position = pvm * fovea_to_cartesian(fovea_to_log_polar(position)); // transform to log polar and back to test if the two transformations are inverse
+	
+	//gl_Position = pvm * fovea_to_log_polar(position);
 } 
