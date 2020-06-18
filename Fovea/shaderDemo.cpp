@@ -221,8 +221,9 @@ void renderScene(void) {
 	
 	//	---------------------------------
 	//	binding to our buffer section
-	
-	polarization_shader.setUniform("is_rendering_to_polar_texture", 1);
+
+	glUseProgram(polarization_shader.getProgramIndex());
+
 	bindFrameBuffer(polarBufferID, width, height);
 
 	basicRendering();
@@ -230,8 +231,9 @@ void renderScene(void) {
 	//	---------------------------------
 	//	binding to screen buffer (output)
 
-	polarization_shader.setUniform("is_rendering_to_polar_texture", 0);
-	bindFrameBuffer(0, width, height);
+	glUseProgram(to_cartesian_shader.getProgramIndex());
+
+	//bindFrameBuffer(0, width, height);
 
 	basicRendering();
 }
@@ -573,10 +575,9 @@ int main(int argc, char **argv) {
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
-	if (!setupPolarizationShaders(params))
-		return(1);
-	if (!setupToCartesianShaders(params))
-		return(1); //This returns an error !!!!
+	// Setup shaders for cartesian to polar & polar to cartesian :
+	if (!setupPolarizationShaders(params)) return(1);
+	if (!setupToCartesianShaders(params)) return(1); 
 
 	initOpenGL();
 
