@@ -407,10 +407,20 @@ GLuint setupShaders() {
 	// our shader
 	// ------------------------------------------------------------------------------
 
-	// vertex polarization shader
-	//shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "v");
-	//shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/vertex_polarization.txt");
 
+	// Shader for models
+	to_cartesian_shader.init();
+	to_cartesian_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/to_cartesian.vert");
+
+	// set semantics for the shader variables
+	to_cartesian_shader.setProgramOutput(0, "outputFragment");
+	to_cartesian_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
+
+	to_cartesian_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/to_cartesian.frag");
+
+
+
+	// ------------------------------------------------------------------------------
 
 	Params params = Params(focalPointX, focalPointY, 2, radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
