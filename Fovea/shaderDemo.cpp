@@ -122,10 +122,8 @@ int createTextureAttachment(int width, int height) {
 	return texture;
 }
 
-void initializeFrameBuffer() {
-	//polarBufferID = createFramebuffer();
-	//polarTextureID = createTextureAttachment(width, height);
-
+void initializeFrameBuffer() 
+{
 	// set up floating point framebuffer to render scene to
 	
 	glGenFramebuffers(1, &polarBufferID);
@@ -495,9 +493,6 @@ void initOpenGL()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[3]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(faceIndex), faceIndex, GL_STATIC_DRAW);
 
-	// initialize polar buffer
-	initializeFrameBuffer();
-
 	// unbind the VAO
 	glBindVertexArray(0);
 }
@@ -578,6 +573,9 @@ int main(int argc, char **argv) {
 	// Setup shaders for cartesian to polar & polar to cartesian :
 	if (!setupPolarizationShaders(params)) return(1);
 	if (!setupToCartesianShaders(params)) return(1); 
+
+	// initialize polar buffer
+	initializeFrameBuffer();
 
 	initOpenGL();
 
