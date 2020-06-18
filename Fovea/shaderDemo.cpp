@@ -233,7 +233,7 @@ void renderScene(void) {
 
 	glUseProgram(to_cartesian_shader.getProgramIndex());
 
-	//bindFrameBuffer(0, width, height);
+	bindFrameBuffer(0, width, height);
 
 	basicRendering();
 }
