@@ -21,6 +21,8 @@ layout (std140) uniform Params
 	float r;// = ...;
 	//float rp;// = _log(base, r); // log scaled r...
 }; //________________________________________________________
+//===========================================================
+
 
 layout (std140) uniform Matrices {
 	mat4 pvm;
@@ -37,12 +39,14 @@ out vec4 pc; // out pc to send point coordinate data to fragment shader7
 // LOGIC:
 
 // UTILITY :
-float _log(float base, float x) {
+float _log(float base, float x) 
+{
     return log(x) / log(base); // Basiswechselsatz
 }
 
 // transform cartesian coordinates to polar coordinates
-vec4 fovea_to_log_polar(vec4 v) {
+vec4 fovea_to_log_polar(vec4 v) 
+{
 	vec2 fv_vec = vec2( v.x-fx, v.y-fy );
 
 	float vp = _log( // logarithmic distance!
@@ -51,20 +55,19 @@ vec4 fovea_to_log_polar(vec4 v) {
 	);
 			
 	float va = atan( fv_vec.y, fv_vec.x  ); // polar angle
-
 	vec3 v_pol; // vertices  radial
 
 	v_pol.x = vp;
 	v_pol.y = va;
 	v_pol.z = v.z;
-	
-	//pc = vec4(v_pol, v.w);
-	
+
 	return vec4( v_pol, v.w );
 }
 
-// transform polar coordinates to cartesian coordinates
-vec4 fovea_to_cartesian(vec4 in_) {
+// TESTING ONLY :  -> Should not be used here in final implementation!
+//===========================================================
+vec4 fovea_to_cartesian(vec4 in_) // transform polar coordinates to cartesian coordinates
+{
 	float vp = in_.x; // p is x-direction in output
   	float va = in_.y; // alpha is y-direction in output
   
@@ -74,12 +77,15 @@ vec4 fovea_to_cartesian(vec4 in_) {
 	
   	return vec4(x, y, in_.z, in_.w);
 }
+//===========================================================
+// ^ TESTING ONLY ^
 
-void main() {
+void main() 
+{
 	pc = position;
 	
 	//gl_Position = pvm * position;
-	//gl_Position = pvm * fovea_to_log_polar(position);
+	//gl_Position = pvm * fovea_to_log_polar(position); // <--- goal!
 	
 	gl_Position = pvm * fovea_to_cartesian(fovea_to_log_polar(position)); // transform to log polar and back to test if the two transformations are inverse
 } 
