@@ -418,20 +418,20 @@ GLuint setupPolarizationShaders(Params params)
 
 GLuint setupToCartesianShaders(Params params) 
 {
-	// ------------------------------------------------------------------------------
-
 	to_cartesian_shader.init(); // Shader for models
 
-	
 	// "to cartesian" vertex shader : simply passes texture and its coordinates to fragment shader...
-	to_cartesian_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/to_cartesian.vert");
+	to_cartesian_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/to_cartesian_shader.vert");
 
 	// set semantics for the shader variables
 	to_cartesian_shader.setProgramOutput(0, "outputFragment");
+
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
+	to_cartesian_shader.setVertexAttribName(VSShaderLib::TEXTURE_COORD_ATTRIB, "texCoord");
+
 
 	// "to cartesian" fragment shader : interpolates polar pixels to cartesian!
-	to_cartesian_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/to_cartesian.frag");
+	to_cartesian_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/to_cartesian_shader.frag");
 
 	// ------------------------------------------------------------------------------
 
@@ -573,11 +573,10 @@ int main(int argc, char **argv) {
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
-
 	if (!setupPolarizationShaders(params))
 		return(1);
 	if (!setupToCartesianShaders(params))
-	//	return(1); //This returns an error !!!!
+		return(1); //This returns an error !!!!
 
 	initOpenGL();
 

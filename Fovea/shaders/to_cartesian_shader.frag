@@ -18,7 +18,7 @@ layout (std140) uniform Params
 
 	// | Radius: (... of view cone)
 	// \-------------------------------
-	float r;// = ...;
+	float r;
 	//float rp;// = _log(base, r); // log scaled r...
 };
 //=========================================================================================//
@@ -27,7 +27,7 @@ layout (std140) uniform Params
 
 //INPUTS :
 
-in vec2 texCoordAsVertex; // pixel coordinate of current output which comes from vertex shader
+in vec2 texCoordAsVertex;           // pixel coordinate of current output which comes from vertex shader
 uniform sampler2D polBufferTexture; //---> FROM POLAR BUFFER : has been set by this shader in "render_to_polar_buffer == 1" mode!
 
 uniform int is_rendering_to_polar_texture;
@@ -61,7 +61,7 @@ void main()
 {
 	//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(gl_TexCoord[0]));
 
-	outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(texCoordAsVertex)));
+	outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(texCoordAsVertex));
 	
 	//outputFragment = texture2D(polBufferTexture, vec2(512, 256));
 
