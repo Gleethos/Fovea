@@ -38,9 +38,10 @@ out vec4 pc; // out pc to send point coordinate data to fragment shader7
 
 // UTILITY :
 float _log(float base, float x) {
-    return log(x) / log(base); // Basiswechselsatz für Logarithmen
+    return log(x) / log(base); // Basiswechselsatz
 }
 
+// transform cartesian coordinates to polar coordinates
 vec4 fovea_to_log_polar(vec4 v) {
 	vec2 fv_vec = vec2( v.x-fx, v.y-fy );
 
@@ -62,6 +63,7 @@ vec4 fovea_to_log_polar(vec4 v) {
 	return vec4( v_pol, v.w );
 }
 
+// transform polar coordinates to cartesian coordinates
 vec4 fovea_to_cartesian(vec4 in_) {
 	float vp = in_.x; // p is x-direction in output
   	float va = in_.y; // alpha is y-direction in output
@@ -76,10 +78,8 @@ vec4 fovea_to_cartesian(vec4 in_) {
 void main() {
 	pc = position;
 	
-	//gl_Position = pvm * fovea_to_log_polar(position);
 	//gl_Position = pvm * position;
+	//gl_Position = pvm * fovea_to_log_polar(position);
 	
 	gl_Position = pvm * fovea_to_cartesian(fovea_to_log_polar(position)); // transform to log polar and back to test if the two transformations are inverse
-	
-	//gl_Position = pvm * fovea_to_log_polar(position);
 } 

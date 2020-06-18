@@ -41,6 +41,7 @@ vec4 colorized_polar(vec4 in_)
 	return in_;
 }
 
+// transform polar coordinates to cartesian coordinates
 vec2 fovea_to_cartesian(vec2 in_) {
 	float vp = in_.x; // p is x-direction in output
   	float va = in_.y; // alpha is y-direction in output
@@ -54,10 +55,6 @@ vec2 fovea_to_cartesian(vec2 in_) {
 
 void main()
 {
-	//outputFragment = vec4(1.0, 0.0, 0.0, 1.0);
-	//outputFragment = texture2D(polBufferTexture, vec2(1.0, 1.0));
-	//outputFragment = pc;
-	
 	//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(gl_TexCoord[0]));
 	if (is_rendering_to_polar_texture == 1) 
 	{
@@ -65,12 +62,8 @@ void main()
 	}
 	else
 	{
-		outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(vec2(1.0, 1.0)));
+		outputFragment = pc;
+		//outputFragment = texture2D(polBufferTexture, fovea_to_cartesian(vector...)));
+		//outputFragment = texture2D(polBufferTexture, vec2(512, 256));
 	}
-	
-	//outputFragment = texture2D(polBufferTexture, gl_TexCoord[0]);
-	//outputFragment = texture2D(polBufferTexture, vec2(1.0, 1.0));
-	
-	//outputFragment = vec4(0.0, 0.0, 1.0, 1.0);
-
 }

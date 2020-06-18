@@ -50,11 +50,39 @@ char s[32];
 
 GLuint vao;
 
+struct Params {
+	Params(float fx_, float fy_, float base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
+
+	float fx;
+	float fy;
+	float base;
+	float r;
+};
+
 int width = 1024;
 int height = 512;
 
+int focalPointX = width / 2;
+int focalPointY = height / 2;
+
+bool finishedInitializing = false;
+
+// radius of central area
+int radius = 300;
+
 GLuint polarBufferID = 0;
 int polarTextureID = 0;
+
+// ------------------------------------------------------------
+//
+// utility functions
+//
+
+void sendFoveaParamsToShader(VSShaderLib shader, int focalPointX, int focalPointY, int radius, int base = 2) {
+	Params params = Params(focalPointX, focalPointY, base, radius);
+	shader.setBlock("Params", &params);
+	printf("shader params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
+}
 
 // ------------------------------------------------------------
 //
@@ -121,15 +149,16 @@ void initializeFrameBuffer() {
 	unsigned int attachments[1] = { GL_COLOR_ATTACHMENT0 };
 	glDrawBuffers(1, attachments);
 
+	// Always check that our framebuffer is ok
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
+		printf("framebuffer complete\n");
+
 	polarTextureID = colorBuffers[0];
 
-	// bind our buffer
-	glBindFramebuffer(GL_FRAMEBUFFER, polarBufferID);
+	shader.setUniform("polBufferTexture", &polarTextureID); // set id of texture to use it as sampler2D in renderer
 
-	shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
-
-	printf("polar buffer id: %d\n", polarBufferID);
-	printf("polar texture id: %d\n", polarTextureID);
+	printf("our buffer id: %d\n", polarBufferID);
+	printf("our texture id: %d\n", polarTextureID);
 
 	//bindFrameBuffer(0, width, height); // binds back to screen
 }
@@ -143,6 +172,9 @@ void changeSize(int w, int h) {
 
 	width = w;
 	height = h;
+
+	focalPointX = width / 2;
+	focalPointY = height / 2;
 
 	// printf("resize: new width, height = %f, %f\n", float(width), float(height));
 
@@ -184,42 +216,22 @@ void basicRendering() {
 }
 
 void renderScene(void) {
-
-	//	--------------------------
+	
+	//	---------------------------------
 	//	binding to our buffer section
 	
 	shader.setUniform("is_rendering_to_polar_texture", 1);
 	bindFrameBuffer(polarBufferID, width, height);
+
 	basicRendering();
 
-	//	--------------------------
+	//	---------------------------------
 	//	binding to screen buffer (output)
 
 	shader.setUniform("is_rendering_to_polar_texture", 0);
 	bindFrameBuffer(0, width, height);
+
 	basicRendering();
-
-	//bindFrameBuffer(0, width, height);
-	//shader.setUniform("render_to_polar_buffer", 0);
-	//shader.setUniform("polBufferTexture", 0);
-
-	//  --------------------------
-	/*
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	// load identity matrices
-	vsml->loadIdentity(VSMathLib::VIEW);
-	vsml->loadIdentity(VSMathLib::MODEL);
-	// set the camera using a function similar to gluLookAt
-	vsml->lookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
-	// use our shader
-	glUseProgram(shader.getProgramIndex());
-	// send matrices to uniform buffer
-	vsml->matricesToGL();
-	// render VAO
-	glBindVertexArray(vao);
-	glDrawElements(GL_TRIANGLES, faceCount * 3, GL_UNSIGNED_INT, 0);*/
-	//swap buffers
-	//glutSwapBuffers();
 }
 
 
@@ -232,8 +244,18 @@ void processKeys(unsigned char key, int xx, int yy)
 {
 	switch(key) {
 
-		case 27:
+		case 27: // esc key
 			glutLeaveMainLoop();
+			break;
+
+		case 43: // + key
+			radius += 2;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			break;
+
+		case 45: // - key
+			radius -= 2;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
 			break;
 
 		case 'c': 
@@ -244,6 +266,31 @@ void processKeys(unsigned char key, int xx, int yy)
 
 //  uncomment this if not using an idle func
 //	glutPostRedisplay();
+}
+
+static void specialKeyPressed(int key, int x, int y)
+{
+	switch (key) {
+		case GLUT_KEY_UP:
+			focalPointY += 5;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			break;
+
+		case GLUT_KEY_DOWN:
+			focalPointY -= 5;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			break;
+
+		case GLUT_KEY_LEFT:
+			focalPointX -= 5;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			break;
+
+		case GLUT_KEY_RIGHT:
+			focalPointX += 5;
+			sendFoveaParamsToShader(shader, focalPointX, focalPointY, radius);
+			break;
+	}
 }
 
 
@@ -363,17 +410,7 @@ GLuint setupShaders() {
 	shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/mergedShader.frag");
 	//shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/polar_interpolarization.txt");
 
-	
-	struct Params {
-		Params(float fx_, float fy_, float base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
-
-		float fx;
-		float fy;
-		float base;
-		float r;
-	};
-
-	Params params = Params(width / 2, height / 2, 2, 300);
+	Params params = Params(focalPointX, focalPointY, 2, radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 
 	printf("shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
@@ -490,12 +527,11 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(&changeSize);
 
-//	use timer function instead of renderScene as idle function
-	glutTimerFunc(1000 / 60.0, &timer, 1);
-	// glutIdleFunc(renderScene); 
+	glutTimerFunc(1000 / 60.0, &timer, 1); //	use timer function instead of renderScene as idle function
 
 //	Mouse and Keyboard Callbacks
 	glutKeyboardFunc(processKeys);
+	glutSpecialFunc(specialKeyPressed);
 	glutMouseFunc(processMouseButtons);
 	glutMotionFunc(processMouseMotion);
 
@@ -519,6 +555,10 @@ int main(int argc, char **argv) {
 	initOpenGL();
 
 	initVSL();
+
+	//glutFullScreen();
+
+	finishedInitializing = true;
 
 	//  GLUT main loop
 	glutMainLoop();
