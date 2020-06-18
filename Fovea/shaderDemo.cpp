@@ -157,7 +157,7 @@ void initializeFrameBuffer() {
 
 	polarTextureID = colorBuffers[0];
 
-	polarization_shader.setUniform("polBufferTexture", &polarTextureID); // set id of texture to use it as sampler2D in renderer
+	polarization_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 	printf("our buffer id: %d\n", polarBufferID);
 	printf("our texture id: %d\n", polarTextureID);
