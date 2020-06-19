@@ -102,6 +102,7 @@ void bindFrameBuffer(int frameBuffer, int width, int height) {
 
 void initializeFrameBuffer() 
 {
+	glEnable(GL_TEXTURE_2D);
 	// set up floating point framebuffer to render scene to
 	glGenFramebuffers(1, &polarBufferID);
 	glBindFramebuffer(GL_FRAMEBUFFER, polarBufferID);
