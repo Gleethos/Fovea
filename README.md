@@ -43,3 +43,5 @@ Der konzeptionelle und mathematische Hintergrund für dieses Projekt stammt aus 
 Implementiert wurde der algorithmus mithilfe folgender Tutorials: <br>
 <a>https://learnopengl.com/Advanced-Lighting/Bloom</a> <br>
 <a>https://www.lighthouse3d.com/tutorials/glsl-tutorial/texture-coordinates/</a> <br>
+
+---
