@@ -222,7 +222,6 @@ void renderScene(void)
 void processKeys(unsigned char key, int xx, int yy)
 {
 	switch(key) {
-
 		case 27: // esc key
 			glutLeaveMainLoop();
 			break;
@@ -242,9 +241,7 @@ void processKeys(unsigned char key, int xx, int yy)
 		case 'c': 
 			printf("Camera Spherical Coordinates (%f, %f, %f)\n", alpha, beta, r);
 			break;
-
 	}
-
 //  uncomment this if not using an idle func
 //	glutPostRedisplay();
 }
@@ -315,7 +312,6 @@ void processMouseButtons(int button, int state, int xx, int yy)
 
 void processMouseMotion(int xx, int yy)
 {
-
 	int deltaX{}, deltaY{};
 	float alphaAux{}, betaAux{};
 	float rAux{};
@@ -325,7 +321,6 @@ void processMouseMotion(int xx, int yy)
 
 	// left mouse button: move camera
 	if (tracking == 1) {
-
 
 		alphaAux = alpha + deltaX;
 		betaAux = beta + deltaY;
@@ -345,7 +340,6 @@ void processMouseMotion(int xx, int yy)
 		if (rAux < 0.1f)
 			rAux = 0.1f;
 	}
-
 	camX = rAux * (float)sin(alphaAux * 3.14f / 180.0f) * (float)cos(betaAux * 3.14f / 180.0f);
 	camZ = rAux * (float)cos(alphaAux * 3.14f / 180.0f) * (float)cos(betaAux * 3.14f / 180.0f);
 	camY = rAux * (float)sin(betaAux * 3.14f / 180.0f);
@@ -355,8 +349,8 @@ void processMouseMotion(int xx, int yy)
 }
 
 
-void mouseWheel(int wheel, int direction, int x, int y) {
-
+void mouseWheel(int wheel, int direction, int x, int y) 
+{
 	r += direction * 0.1f;
 	if (r < 0.1f)
 		r = 0.1f;
@@ -382,7 +376,7 @@ GLuint setupPolarizationShaders(Params params)
 	// "polarization" vertex shader : transforms vertecies to log polar!
 	polarization_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/polarization_shader.vert");
 	
-	// set semantics for the shader variables
+	// set semantics for the shader variables :
 	polarization_shader.setProgramOutput(0, "outputFragment");
 	polarization_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
 	
@@ -396,7 +390,6 @@ GLuint setupPolarizationShaders(Params params)
 
 	printf("\nInfoLog for polarization shaders\n%sProgramm Index: %d\n\n", polarization_shader.getAllInfoLogs().c_str(), polarization_shader.getProgramIndex());
 	
-	
 	return(polarization_shader.isProgramValid());
 }
 
@@ -407,13 +400,13 @@ GLuint setupToCartesianShaders(Params params)
 	// "to cartesian" vertex shader : simply passes texture and its coordinates to fragment shader...
 	to_cartesian_shader.loadShader(VSShaderLib::VERTEX_SHADER, "shaders/to_cartesian_shader.vert");
 
-	// set semantics for the shader variables
+	// set semantics for the shader variables :
 	to_cartesian_shader.setProgramOutput(0, "outputFragment");
 	
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::TEXTURE_COORD_ATTRIB, "texCoord");
-	//to_cartesian_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
-
+	to_cartesian_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
+	
 	// "to cartesian" fragment shader : interpolates polar pixels to cartesian!
 	to_cartesian_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/to_cartesian_shader.frag");
 
@@ -453,25 +446,25 @@ void initOpenGL()
 	GLuint buffers[4];
 	glGenBuffers(4, buffers);
 
-	//vertex coordinates buffer
+	// vertex coordinates buffer
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VSShaderLib::VERTEX_COORD_ATTRIB);
 	glVertexAttribPointer(VSShaderLib::VERTEX_COORD_ATTRIB, 4, GL_FLOAT, 0, 0, 0);
 
-	//texture coordinates buffer
+	// texture coordinates buffer
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[1]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(texCoords), texCoords, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VSShaderLib::TEXTURE_COORD_ATTRIB);
 	glVertexAttribPointer(VSShaderLib::TEXTURE_COORD_ATTRIB, 2, GL_FLOAT, 0, 0, 0);
 
-	//normals buffer
+	// normals buffer
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[2]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(normals), normals, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VSShaderLib::NORMAL_ATTRIB);
 	glVertexAttribPointer(VSShaderLib::NORMAL_ATTRIB, 3, GL_FLOAT, 0, 0, 0);
 
-	//index buffer
+	// index buffer
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[3]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(faceIndex), faceIndex, GL_STATIC_DRAW);
 
@@ -547,15 +540,15 @@ int main(int argc, char **argv) {
 	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
 
 	Params params = Params(focalPointX, focalPointY, 2, radius);
-	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
+//  Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %d, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
-	// initialize polar buffer
-	initializeFrameBuffer();
+//  initialize polar buffer / texture to render into!
+	initializeFrameBuffer(); // Sets globally defined id's for buffer and attached texture. (Which shall be rendered into by the polarization shader)
 
-	// Setup shaders for cartesian to polar & polar to cartesian :
-	if (!setupPolarizationShaders(params)) return(1);
-	if (!setupToCartesianShaders(params)) return(1); 
+//  Setup shaders for cartesian to polar & polar to cartesian :
+	if (!setupPolarizationShaders(params)) return(1); // -~=> Shader transforms vertexies from cartesian to polar! (Only in vertex shader)
+	if (!setupToCartesianShaders(params)) return(1);  // -~=> Shader transforms fragment pixels to cartesian and interpolates! (Only in fragment shader)
 
 	initOpenGL();
 
@@ -563,11 +556,11 @@ int main(int argc, char **argv) {
 
 	glutTimerFunc((unsigned int)(1000 / 60.0), &timer, 1); //	use timer function instead of renderScene as idle function
 
-	//glutFullScreen();
+//  glutFullScreen();
 
 	finishedInitializing = true;
 
-	//  GLUT main loop
+//  GLUT main loop
 	glutMainLoop();
 
 	return(0);

@@ -1,5 +1,7 @@
 # Fixed Foveated Rendering
 
+**Contributers**: Lukas Hinterleitner, Daniel Nepp
+
 ## Allgmein
 In diesem Projekt haben wir versucht eine einfache Foveated-Rendering Implementierung zu erzielen, indem wir Szenen Vertices in das logarithmisch polare Koordinatensystem transformieren und dann die gerenderten Pixel mittels Fragment Shader wieder in das kartesische Koordinatensystem zurückinterpolieren.
 Dabei war das Ziel, dass sowohl Fokuspunkt als auch Sichtfeld Radius vom Benutzer angepasst werden können.
