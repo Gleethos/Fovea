@@ -64,8 +64,8 @@ struct Params {
 int width = 1024;
 int height = 512;
 
-float focalPointX = width / 2;
-float focalPointY = height / 2;
+float focalPointX = (float)width / 2;
+float focalPointY = (float)height / 2;
 
 bool finishedInitializing = false;
 
@@ -83,7 +83,7 @@ int polarTextureID = 0;
 void sendFoveaParamsToShader(VSShaderLib shader, float focalPointX, float focalPointY, float radius, int base = 2.0f) {
 	Params params = Params(focalPointX, focalPointY, base, radius);
 	shader.setBlock("Params", &params);
-	printf("shader with id %d -> params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", shader.getProgramIndex(), params.fx, params.fy, params.base, params.r);
+	printf("shader with id %d -> params changed: (fx: %f, fy: %f, base: %d, r: %f)\n", shader.getProgramIndex(), params.fx, params.fy, params.base, params.r);
 }
 
 // ------------------------------------------------------------
@@ -155,8 +155,8 @@ void changeSize(int w, int h) {
 	width = w;
 	height = h;
 
-	focalPointX = width / 2;
-	focalPointY = height / 2;
+	focalPointX = (float)width / 2;
+	focalPointY = (float)height / 2;
 
 	// printf("resize: new width, height = %f, %f\n", float(width), float(height));
 
@@ -550,9 +550,9 @@ int main(int argc, char **argv) {
 	printf ("Version: %s\n", glGetString (GL_VERSION));
 	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
 
-	Params params = Params(focalPointX, focalPointY, 2.0f, radius);
+	Params params = Params(focalPointX, focalPointY, 2, radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
-	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
+	printf("Shader params: (fx: %f, fy: %f, base: %d, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
 	// initialize polar buffer
 	initializeFrameBuffer();
