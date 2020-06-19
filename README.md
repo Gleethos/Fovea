@@ -71,7 +71,7 @@ vec4 fovea_to_log_polar(vec4 v)
 }
 ```
 
-Fragment Pixel zurück in kartesische Koordinatensystem interpolieren:
+Fragment Pixel zurück in das kartesische Koordinatensystem interpolieren:
 ```
 vec4 fovea_to_cartesian(vec4 in_) // transform polar coordinates to cartesian coordinates
 {
