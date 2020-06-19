@@ -103,7 +103,6 @@ void bindFrameBuffer(int frameBuffer, int width, int height) {
 void initializeFrameBuffer() 
 {
 	// set up floating point framebuffer to render scene to
-	
 	glGenFramebuffers(1, &polarBufferID);
 	glBindFramebuffer(GL_FRAMEBUFFER, polarBufferID);
 	unsigned int colorBuffers[1];
@@ -123,7 +122,6 @@ void initializeFrameBuffer()
 			GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, colorBuffers[i], 0
 		);
 	}
-
 	unsigned int attachments[1] = { GL_COLOR_ATTACHMENT0 };
 	glDrawBuffers(1, attachments);
 
@@ -136,7 +134,7 @@ void initializeFrameBuffer()
 	/*
 		SOMETHING LIKE THIS SHOULD BE DONE MAYBE? :
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(g_quad_vertex_buffer_data), g_quad_vertex_buffer_data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
 	*/
 
 	printf("our buffer id: %d\n", polarBufferID);
@@ -157,12 +155,11 @@ void changeSize(int w, int h) {
 
 	focalPointX = (float)width / 2;
 	focalPointY = (float)height / 2;
-
 	// printf("resize: new width, height = %f, %f\n", float(width), float(height));
 
 	float ratio;
-	// Prevent a divide by zero, when window is too short
-	if(h == 0)
+	
+	if(h == 0) //-> Prevent a divide by zero, when window is too short
 		h = 1;
 	// set the viewport to be the entire window
 	glViewport(0, 0, w, h);
@@ -195,25 +192,25 @@ void basicRendering() {
 	glutSwapBuffers();
 }
 
-void renderScene(void) {
-	
-	//	---------------------------------
-	//	binding to our buffer section
+void renderScene(void) 
+{
+	//	--------------------------------------------
+	//	binding to our texture buffer to render into!
 
 	glUseProgram(polarization_shader.getProgramIndex());
 
 	bindFrameBuffer(polarBufferID, width, height);
 
-	basicRendering();
+	basicRendering();//-> render call using polarization shader!
 
-	//	---------------------------------
-	//	binding to screen buffer (output)
+	//	---------------------------------------------------
+	//	binding to screen buffer (output/displays on screen)
 
 	glUseProgram(to_cartesian_shader.getProgramIndex());
 
 	bindFrameBuffer(0, width, height);
 
-	basicRendering();
+	basicRendering();//-> render call using to cartesian shader!
 }
 
 
@@ -375,7 +372,7 @@ void mouseWheel(int wheel, int direction, int x, int y) {
 
 // --------------------------------------------------------
 //
-// Shader Stuff
+// Shader setup methods :
 //
 
 GLuint setupPolarizationShaders(Params params) 
@@ -412,11 +409,10 @@ GLuint setupToCartesianShaders(Params params)
 
 	// set semantics for the shader variables
 	to_cartesian_shader.setProgramOutput(0, "outputFragment");
-
+	
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::TEXTURE_COORD_ATTRIB, "texCoord");
-	to_cartesian_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
-
+	//to_cartesian_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 	// "to cartesian" fragment shader : interpolates polar pixels to cartesian!
 	to_cartesian_shader.loadShader(VSShaderLib::FRAGMENT_SHADER, "shaders/to_cartesian_shader.frag");
