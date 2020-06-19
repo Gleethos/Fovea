@@ -85,7 +85,6 @@ void main()
 {
 	pc = position;
 	
-	
 	gl_Position = fovea_to_log_polar(pvm * position); // <--- goal!
 	
 	//gl_Position = fovea_to_cartesian(fovea_to_log_polar(pvm * position)); // transform to log polar and back to test if the two transformations are inverse
