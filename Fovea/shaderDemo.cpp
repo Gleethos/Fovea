@@ -180,8 +180,6 @@ void basicRendering() {
 	vsml->loadIdentity(VSMathLib::MODEL);
 	// set the camera using a function similar to gluLookAt
 	vsml->lookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
-	// use our shader
-	glUseProgram(polarization_shader.getProgramIndex());
 	// send matrices to uniform buffer
 	vsml->matricesToGL();
 	// render VAO
@@ -233,7 +231,6 @@ void renderScene(void) {
 		GLuint timeID = glGetUniformLocation(quad_programID, "time");
 
 	*/
-
 
 	glUseProgram(to_cartesian_shader.getProgramIndex());
 

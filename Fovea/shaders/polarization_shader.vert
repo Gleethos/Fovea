@@ -35,7 +35,7 @@ in vec4 position;
 
 // OUTPUT:
 
-out vec4 pc; // out pc to send point coordinate data to fragment shader7
+out vec4 pc; // out pc to send point coordinate data to fragment shader
 
 // LOGIC:
 

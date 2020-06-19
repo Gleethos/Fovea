@@ -21,6 +21,7 @@ layout (std140) uniform Params
 	float r;// = ...;
 	//float rp;// = _log(base, r); // log scaled r...
 }; 
+
 //=========================================================================================//
 // SIMPLY OUTPUTS POLARIZED & RASTERIZED VERTEX FRAGMENTS... IS BEING STORED IN TEXTURE... //
 //=========================================================================================//
@@ -40,5 +41,6 @@ layout(location = 0) out vec4 outputFragment;
 
 void main()
 {
+	// pixel coordinates used here as rgba color for fragment
 	outputFragment = pc; // This goes straight into the polar texture!
 }
