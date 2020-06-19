@@ -81,7 +81,7 @@ int polarTextureID = 0;
 //
 
 void sendFoveaParamsToShader(VSShaderLib shader, int focalPointX, int focalPointY, int radius, int base = 2) {
-	Params params = Params(focalPointX, focalPointY, base, radius);
+	Params params = Params((float)focalPointX, (float)focalPointY, (float)base, (float)radius);
 	shader.setBlock("Params", &params);
 	printf("shader with id %d -> params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", shader.getProgramIndex(), params.fx, params.fy, params.base, params.r);
 }
@@ -372,9 +372,9 @@ void processMouseMotion(int xx, int yy)
 			rAux = 0.1f;
 	}
 
-	camX = rAux * sin(alphaAux * 3.14f / 180.0f) * cos(betaAux * 3.14f / 180.0f);
-	camZ = rAux * cos(alphaAux * 3.14f / 180.0f) * cos(betaAux * 3.14f / 180.0f);
-	camY = rAux *   						       sin(betaAux * 3.14f / 180.0f);
+	camX = rAux * (float)sin(alphaAux * 3.14f / 180.0f) * (float)cos(betaAux * 3.14f / 180.0f);
+	camZ = rAux * (float)cos(alphaAux * 3.14f / 180.0f) * (float)cos(betaAux * 3.14f / 180.0f);
+	camY = rAux * (float)sin(betaAux * 3.14f / 180.0f);
 
 //  uncomment this if not using an idle func
 //	glutPostRedisplay();
@@ -387,9 +387,9 @@ void mouseWheel(int wheel, int direction, int x, int y) {
 	if (r < 0.1f)
 		r = 0.1f;
 
-	camX = r * sin(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camZ = r * cos(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camY = r *   						     sin(beta * 3.14f / 180.0f);
+	camX = r * (float)sin(alpha * 3.14f / 180.0f) * (float)cos(beta * 3.14f / 180.0f);
+	camZ = r * (float)cos(alpha * 3.14f / 180.0f) * (float)cos(beta * 3.14f / 180.0f);
+	camY = r * (float)sin(beta * 3.14f / 180.0f);
 
 //  uncomment this if not using an idle func
 //	glutPostRedisplay();
@@ -462,9 +462,9 @@ GLuint setupToCartesianShaders(Params params)
 void initOpenGL()
 {
 	// set the camera position based on its spherical coordinates
-	camX = r * sin(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camZ = r * cos(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camY = r *   						     sin(beta * 3.14f / 180.0f);
+	camX = r * (float)sin(alpha * 3.14f / 180.0f) * (float)cos(beta * 3.14f / 180.0f);
+	camZ = r * (float)cos(alpha * 3.14f / 180.0f) * (float)cos(beta * 3.14f / 180.0f);
+	camY = r * (float)sin(beta * 3.14f / 180.0f);
 
 	// some GL settings
 	glEnable(GL_DEPTH_TEST);
@@ -526,7 +526,7 @@ void initVSL() {
 
 void timer(int value) {
 	glutPostRedisplay();
-	glutTimerFunc(1000 / 60.0, &timer, 1);
+	glutTimerFunc((unsigned int)(1000 / 60.0), &timer, 1);
 }
 
 // ------------------------------------------------------------
@@ -573,7 +573,7 @@ int main(int argc, char **argv) {
 	printf ("Version: %s\n", glGetString (GL_VERSION));
 	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
 
-	Params params = Params(focalPointX, focalPointY, 2, radius);
+	Params params = Params((float)focalPointX, (float)focalPointY, 2.0f, (float)radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
@@ -588,7 +588,7 @@ int main(int argc, char **argv) {
 
 	initVSL();
 
-	glutTimerFunc(1000 / 60.0, &timer, 1); //	use timer function instead of renderScene as idle function
+	glutTimerFunc((unsigned int)(1000 / 60.0), &timer, 1); //	use timer function instead of renderScene as idle function
 
 	//glutFullScreen();
 
