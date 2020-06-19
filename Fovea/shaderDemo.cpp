@@ -553,8 +553,6 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(&changeSize);
 
-	glutTimerFunc(1000 / 60.0, &timer, 1); //	use timer function instead of renderScene as idle function
-
 //	Mouse and Keyboard Callbacks
 	glutKeyboardFunc(processKeys);
 	glutSpecialFunc(specialKeyPressed);
@@ -589,6 +587,8 @@ int main(int argc, char **argv) {
 	initOpenGL();
 
 	initVSL();
+
+	glutTimerFunc(1000 / 60.0, &timer, 1); //	use timer function instead of renderScene as idle function
 
 	//glutFullScreen();
 

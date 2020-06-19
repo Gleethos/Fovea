@@ -3,6 +3,12 @@ Debug/
 !Debug/freeglut.dll
 !Debug/glew32.dll
 !Debug/glut32.dll
+Release/
+!Release/freeglut.dll
+!Release/glew32.dll
+!Release/glut32.dll
 Fovea/Debug/
+Fovea/Release/
 Fovea/x64
 x64/Debug
+x64/Release
