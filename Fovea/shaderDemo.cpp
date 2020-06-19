@@ -91,13 +91,6 @@ void sendFoveaParamsToShader(VSShaderLib shader, int focalPointX, int focalPoint
 // Framebuffer methods
 //
 
-int createFramebuffer() {
-	GLuint FramebufferName = 0;
-	glGenFramebuffers(1, &FramebufferName);
-	glBindFramebuffer(GL_FRAMEBUFFER, FramebufferName);
-
-	return FramebufferName;
-}
 
 void bindFrameBuffer(int frameBuffer, int width, int height) {
 	if (frameBuffer != 0)
@@ -105,21 +98,6 @@ void bindFrameBuffer(int frameBuffer, int width, int height) {
 
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 	glViewport(0, 0, width, height);
-}
-
-int createTextureAttachment(int width, int height) {
-	GLuint texture;
-	glGenTextures(1, &texture);
-
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, texture, 0);
-
-	return texture;
 }
 
 void initializeFrameBuffer() 
@@ -154,8 +132,6 @@ void initializeFrameBuffer()
 		printf("framebuffer complete\n");
 
 	polarTextureID = colorBuffers[0];
-
-	polarization_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 	printf("our buffer id: %d\n", polarBufferID);
 	printf("our texture id: %d\n", polarTextureID);
@@ -458,6 +434,7 @@ GLuint setupToCartesianShaders(Params params)
 
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::VERTEX_COORD_ATTRIB, "position");
 	to_cartesian_shader.setVertexAttribName(VSShaderLib::TEXTURE_COORD_ATTRIB, "texCoord");
+	to_cartesian_shader.setUniform("polBufferTexture", polarTextureID); // set id of texture to use it as sampler2D in renderer
 
 
 	// "to cartesian" fragment shader : interpolates polar pixels to cartesian!
@@ -600,12 +577,14 @@ int main(int argc, char **argv) {
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
+	// initialize polar buffer
+	initializeFrameBuffer();
+
 	// Setup shaders for cartesian to polar & polar to cartesian :
 	if (!setupPolarizationShaders(params)) return(1);
 	if (!setupToCartesianShaders(params)) return(1); 
 
-	// initialize polar buffer
-	initializeFrameBuffer();
+	
 
 	initOpenGL();
 
