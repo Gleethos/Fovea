@@ -37,18 +37,7 @@ Die Datei Fovea.sln öffnet die Solution und anschließend muss als Build Konfig
 
 Im Anschluss kann das Projekt gebuildet und gestartet werden.
 
-## Quellen
-Der konzeptionelle und mathematische Hintergrund für dieses Projekt stammt aus folgender Veröffentlichung: <br>
-<a>https://duruofei.com/papers/Meng_KernelFoveatedRendering_I3D2018.pdf</a> <br>
-Implementiert wurde der algorithmus mithilfe folgender Tutorials: <br>
-<a>https://learnopengl.com/Advanced-Lighting/Bloom</a> <br>
-<a>https://www.lighthouse3d.com/tutorials/glsl-tutorial/texture-coordinates/</a> <br>
-
----
-
 ## Kern Code
-
-
 Vertex Punkte polarisieren:
 ```
 vec4 fovea_to_log_polar(vec4 v) 
@@ -85,3 +74,13 @@ vec4 fovea_to_cartesian(vec4 in_) // transform polar coordinates to cartesian co
   	return vec4(x, y, in_.z, in_.w);
 }
 ```
+
+## Quellen
+Der konzeptionelle und mathematische Hintergrund für dieses Projekt stammt aus folgender Veröffentlichung: <br>
+<a>https://duruofei.com/papers/Meng_KernelFoveatedRendering_I3D2018.pdf</a> <br>
+Implementiert wurde der algorithmus mithilfe folgender Tutorials: <br>
+<a>https://learnopengl.com/Advanced-Lighting/Bloom</a> <br>
+<a>https://www.lighthouse3d.com/tutorials/glsl-tutorial/texture-coordinates/</a> <br>
+
+---
+
