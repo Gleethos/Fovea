@@ -14,7 +14,7 @@ layout (std140) uniform Params
 	// | Base:
 	// \-------
 
-	float base; // = 2;
+	int base; // = 2;
 
 	// | Radius: (... of view cone)
 	// \-------------------------------

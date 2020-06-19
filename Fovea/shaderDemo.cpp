@@ -53,24 +53,24 @@ char s[32];
 GLuint vao;
 
 struct Params {
-	Params(float fx_, float fy_, float base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
+	Params(float fx_, float fy_, int base_, float r_) : fx(fx_), fy(fy_), base(base_), r(r_) {}
 
 	float fx;
 	float fy;
-	float base;
+	int base;
 	float r;
 };
 
 int width = 1024;
 int height = 512;
 
-int focalPointX = width / 2;
-int focalPointY = height / 2;
+float focalPointX = width / 2;
+float focalPointY = height / 2;
 
 bool finishedInitializing = false;
 
 // radius of central area
-int radius = 300;
+float radius = 300;
 
 GLuint polarBufferID = 0;
 int polarTextureID = 0;
@@ -80,8 +80,8 @@ int polarTextureID = 0;
 // utility functions
 //
 
-void sendFoveaParamsToShader(VSShaderLib shader, int focalPointX, int focalPointY, int radius, int base = 2) {
-	Params params = Params((float)focalPointX, (float)focalPointY, (float)base, (float)radius);
+void sendFoveaParamsToShader(VSShaderLib shader, float focalPointX, float focalPointY, float radius, int base = 2.0f) {
+	Params params = Params(focalPointX, focalPointY, base, radius);
 	shader.setBlock("Params", &params);
 	printf("shader with id %d -> params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", shader.getProgramIndex(), params.fx, params.fy, params.base, params.r);
 }
@@ -573,7 +573,7 @@ int main(int argc, char **argv) {
 	printf ("Version: %s\n", glGetString (GL_VERSION));
 	printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
 
-	Params params = Params((float)focalPointX, (float)focalPointY, 2.0f, (float)radius);
+	Params params = Params(focalPointX, focalPointY, 2.0f, radius);
 	//Params params = Params(1.0f, 1.0f, 0.0f, 1.0f); // only to check if uniform blocks are working in our programm
 	printf("Shader params: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
 
