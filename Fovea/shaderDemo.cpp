@@ -83,7 +83,7 @@ int polarTextureID = 0;
 void sendFoveaParamsToShader(VSShaderLib shader, int focalPointX, int focalPointY, int radius, int base = 2) {
 	Params params = Params(focalPointX, focalPointY, base, radius);
 	shader.setBlock("Params", &params);
-	printf("shader params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", params.fx, params.fy, params.base, params.r);
+	printf("shader with id %d -> params changed: (fx: %f, fy: %f, base: %f, r: %f)\n", shader.getProgramIndex(), params.fx, params.fy, params.base, params.r);
 }
 
 // ------------------------------------------------------------
@@ -256,11 +256,13 @@ void processKeys(unsigned char key, int xx, int yy)
 		case 43: // + key
 			radius += 2;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case 45: // - key
 			radius -= 2;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case 'c': 
@@ -277,23 +279,27 @@ static void specialKeyPressed(int key, int x, int y)
 {
 	switch (key) {
 		case GLUT_KEY_UP:
-			focalPointY += 5;
+			focalPointY += 4;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_DOWN:
-			focalPointY -= 5;
+			focalPointY -= 4;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_LEFT:
-			focalPointX -= 5;
+			focalPointX -= 4;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 
 		case GLUT_KEY_RIGHT:
-			focalPointX += 5;
+			focalPointX += 4;
 			sendFoveaParamsToShader(polarization_shader, focalPointX, focalPointY, radius);
+			sendFoveaParamsToShader(to_cartesian_shader, focalPointX, focalPointY, radius);
 			break;
 	}
 }
@@ -336,9 +342,9 @@ void processMouseButtons(int button, int state, int xx, int yy)
 void processMouseMotion(int xx, int yy)
 {
 
-	int deltaX, deltaY;
-	float alphaAux, betaAux;
-	float rAux;
+	int deltaX{}, deltaY{};
+	float alphaAux{}, betaAux{};
+	float rAux{};
 
 	deltaX =  - xx + startX;
 	deltaY =    yy - startY;
@@ -414,7 +420,8 @@ GLuint setupPolarizationShaders(Params params)
 	polarization_shader.prepareProgram();
 	polarization_shader.setBlock("Params", &params);
 
-	printf("InfoLog for polarization shaders\n%s\n\n", polarization_shader.getAllInfoLogs().c_str());
+	printf("\nInfoLog for polarization shaders\n%sProgramm Index: %d\n\n", polarization_shader.getAllInfoLogs().c_str(), polarization_shader.getProgramIndex());
+	
 	
 	return(polarization_shader.isProgramValid());
 }
@@ -442,9 +449,7 @@ GLuint setupToCartesianShaders(Params params)
 	to_cartesian_shader.prepareProgram();
 	to_cartesian_shader.setBlock("Params", &params);
 
-
-	printf("InfoLog for 'to cartesian' shaders\n%s\n\n", to_cartesian_shader.getAllInfoLogs().c_str());
-
+	printf("\nInfoLog for 'to cartesian' shaders\n%sProgramm Index: %d\n\n", to_cartesian_shader.getAllInfoLogs().c_str(), to_cartesian_shader.getProgramIndex());
 
 	return(to_cartesian_shader.isProgramValid());
 }
@@ -580,8 +585,6 @@ int main(int argc, char **argv) {
 	// Setup shaders for cartesian to polar & polar to cartesian :
 	if (!setupPolarizationShaders(params)) return(1);
 	if (!setupToCartesianShaders(params)) return(1); 
-
-	
 
 	initOpenGL();
 
